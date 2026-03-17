@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import is.vidmot.view.FerdSpjald?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.ButtonType?>
+
+<DialogPane xmlns:fx="http://javafx.com/fxml"
+  fx:controller="is.vidmot.controller.FerdDialogController">
+
+  <content>
+    <FerdSpjald fx:id="fxFerdSpjald" />
+  </content>
+
+  <buttonTypes>
+    <ButtonType fx:constant="OK" />
+    <ButtonType fx:constant="CANCEL" />
+  </buttonTypes>
+</DialogPane>

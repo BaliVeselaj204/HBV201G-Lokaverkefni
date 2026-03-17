@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import is.vidmot.view.FerdSpjald?>
+
+<VBox xmlns="http://javafx.com/javafx"
+  xmlns:fx="http://javafx.com/fxml" stylesheets="@css/ferd.css" spacing="5"
+  fx:controller="is.vidmot.controller.FerdController">
+
+  <FerdSpjald fx:id="fxFerdSpjald" />
+
+  <HBox alignment="CENTER">
+    <Button text="Aftur" onAction="#fxOnBack" />
+  </HBox>
+</VBox>
+
