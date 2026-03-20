@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
-import is.vinnsla.Ferd;
+import is.vinnsla.Recipe;
 import is.vinnsla.Ferdaplan;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 
 public class AdalController {
   @FXML
-  private ListView<Ferd> fxListView;
+  private ListView<Recipe> fxListView;
 
   @FXML
   private Label fxLabel;
@@ -68,7 +68,7 @@ public class AdalController {
    */
   @FXML
   private void onSkoda() {
-    Ferd currFerd = fxListView.getSelectionModel().getSelectedItem();
+    Recipe currFerd = fxListView.getSelectionModel().getSelectedItem();
     ViewSwitcher.switchTo(View.FERD, false, currFerd);
     hreinsaLabel();
   }
@@ -79,7 +79,7 @@ public class AdalController {
   @FXML
   private void onNyr() {
     Window owner = fxNyrButton.getScene().getWindow();
-    Optional<Ferd> result = FerdDialogWrapper.birtaDialog(owner);
+    Optional<Recipe> result = FerdDialogWrapper.birtaDialog(owner);
     result.ifPresent(ferd -> ferdaplan.nyFerd(ferd));
 
     if (result.isPresent()) {
@@ -97,7 +97,7 @@ public class AdalController {
     boolean confirmed = StadfestingEydaDialogWrapper.birtaDialog(fxEydaButton.getScene().getWindow());
 
     if (confirmed) {
-      Ferd valinFerd = fxListView.getSelectionModel().getSelectedItem();
+      Recipe valinFerd = fxListView.getSelectionModel().getSelectedItem();
       ferdaplan.eydaFerd(valinFerd);
     }
     hreinsaLabel();

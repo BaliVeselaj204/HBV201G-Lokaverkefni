@@ -3,14 +3,14 @@ package is.vidmot.controller;
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
 import is.vidmot.view.FerdSpjald;
-import is.vinnsla.Ferd;
+import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 /**
  * FerdController
  */
-public class FerdController implements GognInterface {
+public class RecipeController implements GognInterface {
 
   @FXML
   TextField heitiField;
@@ -25,10 +25,10 @@ public class FerdController implements GognInterface {
   private FerdSpjald fxFerdSpjald;
 
   @Override
-  public void setGogn(Ferd f) {
-    fxFerdSpjald.getHeitiProperty().bind(f.getFerd());
-    fxFerdSpjald.getAfangastadurProperty().bind(f.getStadur());
-    fxFerdSpjald.getDagsetningProperty().bind(f.getDate());
+  public void setGogn(Recipe f) {
+    fxFerdSpjald.getHeitiProperty().bind(f.nameProperty());
+    fxFerdSpjald.getAfangastadurProperty().bind(f.descriptionProperty());
+    fxFerdSpjald.getDagsetningProperty().bind(f.difficultyProperty());
   }
 
   /**

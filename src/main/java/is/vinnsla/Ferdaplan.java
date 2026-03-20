@@ -7,13 +7,13 @@ import javafx.collections.ObservableList;
  * Ferdaplan
  */
 public class Ferdaplan {
-  private ObservableList<Ferd> list;
+  private ObservableList<Recipe> list;
 
   public Ferdaplan() {
     list = FXCollections.observableArrayList();
   }
 
-  public ObservableList<Ferd> getList() {
+  public ObservableList<Recipe> getList() {
     return list;
   }
 
@@ -22,7 +22,7 @@ public class Ferdaplan {
    *
    *             Bætir við nýju ferði í lista
    */
-  public void nyFerd(Ferd ferd) {
+  public void nyFerd(Recipe ferd) {
     getList().add(ferd);
   }
 
@@ -31,7 +31,7 @@ public class Ferdaplan {
    *
    *             Eyðir ferð úr lista
    */
-  public void eydaFerd(Ferd ferd) {
+  public void eydaFerd(Recipe ferd) {
     getList().remove(ferd);
   }
 }

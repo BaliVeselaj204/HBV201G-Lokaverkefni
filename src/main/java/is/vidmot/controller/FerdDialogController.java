@@ -1,7 +1,7 @@
 package is.vidmot.controller;
 
 import is.vidmot.view.FerdSpjald;
-import is.vinnsla.Ferd;
+import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
 
 public class FerdDialogController implements GognInterface {
@@ -9,19 +9,19 @@ public class FerdDialogController implements GognInterface {
   @FXML
   private FerdSpjald fxFerdSpjald;
 
-  private Ferd ferd;
+  private Recipe recipe;
 
   @Override
-  public void setGogn(Ferd ferd) {
-    this.ferd = ferd;
+  public void setGogn(Recipe recipe) {
+    this.recipe = recipe;
     fxFerdSpjald.setEditable(true);
-    fxFerdSpjald.getHeitiProperty().bindBidirectional(ferd.getFerd());
-    fxFerdSpjald.getAfangastadurProperty().bindBidirectional(ferd.getStadur());
-    fxFerdSpjald.getDagsetningProperty().bindBidirectional(ferd.getDate());
+    fxFerdSpjald.getHeitiProperty().bindBidirectional(recipe.nameProperty());
+    fxFerdSpjald.getAfangastadurProperty().bindBidirectional(recipe.descriptionProperty());
+    fxFerdSpjald.getDagsetningProperty().bindBidirectional(recipe.difficultyProperty());
   }
 
-  public Ferd getFerd() {
-    return ferd;
+  public Recipe getRecipe() {
+    return recipe;
   }
 
   /**

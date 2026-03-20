@@ -3,7 +3,7 @@ package is.vidmot.controller;
 import java.io.IOException;
 import java.util.Optional;
 
-import is.vinnsla.Ferd;
+import is.vinnsla.Recipe;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -19,7 +19,7 @@ public class FerdDialogWrapper {
    *         Opnar Dialog pane og sendir tóma ferð sem controller bindir við gögn
    *         fyrir nýja ferð
    */
-  public static Optional<Ferd> birtaDialog(Window owner) {
+  public static Optional<Recipe> birtaDialog(Window owner) {
     FXMLLoader loader = new FXMLLoader(
         FerdDialogController.class.getResource("/is/vidmot/nyFerd-dialog.fxml"));
 
@@ -27,17 +27,17 @@ public class FerdDialogWrapper {
       DialogPane pane = loader.load();
       FerdDialogController controller = loader.getController();
 
-      Ferd nyFerd = new Ferd("", "", "");
-      controller.setGogn(nyFerd);
+      Recipe newRecipe = new Recipe();
+      controller.setGogn(newRecipe);
 
-      Dialog<Ferd> dialog = new Dialog<>();
+      Dialog<Recipe> dialog = new Dialog<>();
       dialog.setDialogPane(pane);
       dialog.initOwner(owner);
-      dialog.setTitle("Ný Ferð");
+      dialog.setTitle("New Recipe");
 
       dialog.setResultConverter(buttonType -> {
         if (buttonType == ButtonType.OK && !controller.erTomur()) {
-          return controller.getFerd();
+          return controller.getRecipe();
         }
         return null;
       });

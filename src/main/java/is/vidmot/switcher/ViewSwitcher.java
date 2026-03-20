@@ -1,7 +1,7 @@
 package is.vidmot.switcher;
 
 import is.vidmot.controller.*;
-import is.vinnsla.Ferd;
+import is.vinnsla.Recipe;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -50,7 +50,7 @@ public class ViewSwitcher {
    *                  data parameter fyrir gögn sem við viljum í næsta glugga
    *                  (null fyrir ekkert data)
    */
-  public static void switchTo(View view, boolean cacheView, Ferd data) {
+  public static void switchTo(View view, boolean cacheView, Recipe data) {
     if (scene == null) {
       System.out.println("No scene was set");
       return;

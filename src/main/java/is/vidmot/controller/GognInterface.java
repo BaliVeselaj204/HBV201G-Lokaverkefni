@@ -1,7 +1,7 @@
 package is.vidmot.controller;
 
-import is.vinnsla.Ferd;
+import is.vinnsla.Recipe;
 
 public interface GognInterface {
-  void setGogn(Ferd d);
+  void setGogn(Recipe d);
 }
