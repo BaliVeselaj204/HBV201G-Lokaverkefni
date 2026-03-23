@@ -9,7 +9,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
   xmlns:fx="http://javafx.com/fxml" stylesheets="@css/ferd.css" spacing="5"
-  fx:controller="is.vidmot.controller.FerdController">
+  fx:controller="is.vidmot.controller.RecipeController">
 
   <FerdSpjald fx:id="fxFerdSpjald" />
 

@@ -13,7 +13,7 @@ import is.vidmot.switcher.ViewSwitcher;
 public class AdalApplication extends Application {
   @Override
   public void start(Stage stage) throws IOException {
-    Scene scene = new Scene(new Pane(), 500, 400);
+    Scene scene = new Scene(new Pane(), 900, 700);
     ViewSwitcher.setScene(scene);
     ViewSwitcher.switchTo(View.MAIN);
     stage.setScene(scene);

@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 /**
- * FerdController
+ * RecipeController
  */
 public class RecipeController implements GognInterface {
 
