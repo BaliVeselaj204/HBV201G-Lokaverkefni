@@ -1,13 +1,13 @@
 package is.vidmot.controller;
 
-import is.vidmot.view.FerdSpjald;
+import is.vidmot.view.RecipeSpjald;
 import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
 
 public class FerdDialogController implements GognInterface {
 
   @FXML
-  private FerdSpjald fxFerdSpjald;
+  private RecipeSpjald fxFerdSpjald;
 
   private Recipe recipe;
 
