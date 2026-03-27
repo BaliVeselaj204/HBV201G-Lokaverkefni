@@ -7,7 +7,7 @@
   fx:controller="is.vidmot.controller.FerdDialogController">
 
   <content>
-    <FerdSpjald fx:id="fxFerdSpjald" />
+    <RecipeSpjald fx:id="fxFerdSpjald" />
   </content>
 
   <buttonTypes>

@@ -24,7 +24,7 @@ public class RecipeSpjald extends VBox {
   private SimpleStringProperty dagsetning = new SimpleStringProperty();
 
   public RecipeSpjald() {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/is/vidmot/ferd-spjald.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/is/vidmot/recipe-spjald.fxml"));
     fxmlLoader.setRoot(this);
     fxmlLoader.setController(this);
     try {
