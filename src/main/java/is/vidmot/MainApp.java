@@ -10,7 +10,7 @@ import java.io.IOException;
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
 
-public class AdalApplication extends Application {
+public class MainApp extends Application {
   @Override
   public void start(Stage stage) throws IOException {
     Scene scene = new Scene(new Pane(), 900, 700);
@@ -18,7 +18,7 @@ public class AdalApplication extends Application {
     ViewSwitcher.switchTo(View.MAIN);
     stage.setScene(scene);
     stage.setResizable(false);
-    stage.setTitle("Ferðaplan");
+    stage.setTitle("Recipe Manager");
     stage.show();
   }
 }

@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-public class RecipeSpjald extends VBox {
+public class RecipeCard extends VBox {
 
   @FXML
   private TextField heitiField;
@@ -23,8 +23,8 @@ public class RecipeSpjald extends VBox {
   private SimpleStringProperty afangastadur = new SimpleStringProperty();
   private SimpleStringProperty dagsetning = new SimpleStringProperty();
 
-  public RecipeSpjald() {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/is/vidmot/recipe-spjald.fxml"));
+  public RecipeCard() {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/is/vidmot/recipe-card.fxml"));
     fxmlLoader.setRoot(this);
     fxmlLoader.setController(this);
     try {

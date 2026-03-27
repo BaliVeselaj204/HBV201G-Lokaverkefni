@@ -6,14 +6,14 @@ import java.util.Optional;
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
 import is.vinnsla.Recipe;
-import is.vinnsla.Ferdaplan;
+import is.vinnsla.RecipeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Window;
 import javafx.scene.control.Button;
 
-public class AdalController {
+public class MainController {
   @FXML
   private ListView<Recipe> fxListView;
 
@@ -29,7 +29,7 @@ public class AdalController {
   @FXML
   private Button fxEydaButton;
 
-  Ferdaplan ferdaplan = new Ferdaplan();
+  RecipeManager ferdaplan = new RecipeManager();
 
   /**
    * @throws IOException
@@ -80,7 +80,7 @@ public class AdalController {
   private void onNyr() {
     Window owner = fxNyrButton.getScene().getWindow();
     Optional<Recipe> result = FerdDialogWrapper.birtaDialog(owner);
-    result.ifPresent(ferd -> ferdaplan.nyFerd(ferd));
+    result.ifPresent(ferd -> ferdaplan.newRecipe(ferd));
 
     if (result.isPresent()) {
       hreinsaLabel();
@@ -98,7 +98,7 @@ public class AdalController {
 
     if (confirmed) {
       Recipe valinFerd = fxListView.getSelectionModel().getSelectedItem();
-      ferdaplan.eydaFerd(valinFerd);
+      ferdaplan.removeRecipe(valinFerd);
     }
     hreinsaLabel();
   }

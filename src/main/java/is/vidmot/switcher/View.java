@@ -1,8 +1,8 @@
 package is.vidmot.switcher;
 
 public enum View {
-  MAIN("/is/vidmot/adal-view.fxml"),
-  FERD("/is/vidmot/ferd-view.fxml");
+  MAIN("/is/vidmot/main-view.fxml"),
+  FERD("/is/vidmot/recipe-view.fxml");
 
   private String fileName;
 

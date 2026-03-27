@@ -2,7 +2,7 @@ package is.vidmot.controller;
 
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
-import is.vidmot.view.RecipeSpjald;
+import is.vidmot.view.RecipeCard;
 import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -22,7 +22,7 @@ public class RecipeController implements GognInterface {
   TextField dagsetningField;
 
   @FXML
-  private RecipeSpjald fxFerdSpjald;
+  private RecipeCard fxFerdSpjald;
 
   @Override
   public void setGogn(Recipe f) {

@@ -59,7 +59,7 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>is.vidmot/is.vidmot.AdalApplication</mainClass>
+              <mainClass>is.vidmot/is.vidmot.MainApp</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
@@ -72,7 +72,7 @@
         <execution>
             <id>debug</id>
             <configuration>
-                <mainClass>is.vidmot/is.vidmot.AdalApplication</mainClass>
+                <mainClass>is.vidmot/is.vidmot.MainApp</mainClass>
                 <options>
                     <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
                 </options>

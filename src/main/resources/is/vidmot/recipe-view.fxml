@@ -5,13 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
-<?import is.vidmot.view.RecipeSpjald?>
+<?import is.vidmot.view.RecipeCard?>
 
 <VBox xmlns="http://javafx.com/javafx"
   xmlns:fx="http://javafx.com/fxml" stylesheets="@css/ferd.css" spacing="5"
   fx:controller="is.vidmot.controller.RecipeController">
 
-  <RecipeSpjald fx:id="fxFerdSpjald" />
+  <RecipeCard fx:id="fxFerdSpjald" />
 
   <HBox alignment="CENTER">
     <Button text="Aftur" onAction="#fxOnBack" />
