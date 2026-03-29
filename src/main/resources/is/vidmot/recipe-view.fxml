@@ -8,10 +8,10 @@
 <?import is.vidmot.view.RecipeCard?>
 
 <VBox xmlns="http://javafx.com/javafx"
-  xmlns:fx="http://javafx.com/fxml" stylesheets="@css/ferd.css" spacing="5"
+  xmlns:fx="http://javafx.com/fxml" stylesheets="@css/recipe.css" spacing="5"
   fx:controller="is.vidmot.controller.RecipeController">
 
-  <RecipeCard fx:id="fxFerdSpjald" />
+  <RecipeCard fx:id="fxRecipeCard" />
 
   <HBox alignment="CENTER">
     <Button text="Aftur" onAction="#fxOnBack" />

@@ -10,7 +10,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Window;
 
-public class FerdDialogWrapper {
+public class RecipeDialogWrapper {
 
   /**
    * @param owner
@@ -21,11 +21,11 @@ public class FerdDialogWrapper {
    */
   public static Optional<Recipe> birtaDialog(Window owner) {
     FXMLLoader loader = new FXMLLoader(
-        FerdDialogController.class.getResource("/is/vidmot/nyFerd-dialog.fxml"));
+        RecipeDialogController.class.getResource("/is/vidmot/newRecipe-dialog.fxml"));
 
     try {
       DialogPane pane = loader.load();
-      FerdDialogController controller = loader.getController();
+      RecipeDialogController controller = loader.getController();
 
       Recipe newRecipe = new Recipe();
       controller.setGogn(newRecipe);

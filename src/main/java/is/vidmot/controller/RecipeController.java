@@ -22,13 +22,13 @@ public class RecipeController implements GognInterface {
   TextField dagsetningField;
 
   @FXML
-  private RecipeCard fxFerdSpjald;
+  private RecipeCard fxRecipeCard;
 
   @Override
   public void setGogn(Recipe f) {
-    fxFerdSpjald.getHeitiProperty().bind(f.nameProperty());
-    fxFerdSpjald.getAfangastadurProperty().bind(f.descriptionProperty());
-    fxFerdSpjald.getDagsetningProperty().bind(f.difficultyProperty());
+    fxRecipeCard.getHeitiProperty().bind(f.nameProperty());
+    fxRecipeCard.getAfangastadurProperty().bind(f.descriptionProperty());
+    fxRecipeCard.getDagsetningProperty().bind(f.difficultyProperty());
   }
 
   /**

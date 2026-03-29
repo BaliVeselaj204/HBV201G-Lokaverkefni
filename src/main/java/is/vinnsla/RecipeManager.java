@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * Ferdaplan
+ * RecipeManager
  */
 public class RecipeManager {
   private ObservableList<Recipe> list;

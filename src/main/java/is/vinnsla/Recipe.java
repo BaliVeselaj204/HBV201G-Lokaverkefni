@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * Ferd
+ * Recipe
  */
 public class Recipe {
   private StringProperty name = new SimpleStringProperty();

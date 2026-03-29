@@ -7,7 +7,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Window;
 
-public class StadfestingEydaDialogWrapper {
+public class RemoveRecipeDialogWrapper {
 
   /**
    * @param owner
@@ -17,7 +17,7 @@ public class StadfestingEydaDialogWrapper {
    */
   public static boolean birtaDialog(Window owner) {
     FXMLLoader loader = new FXMLLoader(
-        StadfestingEydaController.class.getResource("/is/vidmot/stadfestingEyda-dialog.fxml"));
+        RemoveRecipeDialogController.class.getResource("/is/vidmot/removeRecipe-dialog.fxml"));
     try {
       DialogPane pane = loader.load();
       Dialog<Boolean> dialog = new Dialog<>();

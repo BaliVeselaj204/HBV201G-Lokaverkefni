@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import is.vidmot.view.RecipeCard?>
 <?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ButtonType?>
 
-<DialogPane xmlns:fx="http://javafx.com/fxml" stylesheets="@css/eyda.css"
-  fx:controller="is.vidmot.controller.StadfestingEydaController">
+<DialogPane xmlns:fx="http://javafx.com/fxml"
+  fx:controller="is.vidmot.controller.RecipeDialogController">
+
   <content>
-    <Label text="Ertu viss um að þú viljir eyða þessum færslu?" />
+    <RecipeCard fx:id="fxRecipeCard" />
   </content>
+
   <buttonTypes>
     <ButtonType fx:constant="OK" />
     <ButtonType fx:constant="CANCEL" />

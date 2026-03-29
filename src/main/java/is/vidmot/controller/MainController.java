@@ -21,15 +21,15 @@ public class MainController {
   private Label fxLabel;
 
   @FXML
-  private Button fxSkodaButton;
+  private Button fxViewButton;
 
   @FXML
-  private Button fxNyrButton;
+  private Button fxNewButton;
 
   @FXML
-  private Button fxEydaButton;
+  private Button fxRemoveButton;
 
-  RecipeManager ferdaplan = new RecipeManager();
+  RecipeManager recipeManager = new RecipeManager();
 
   /**
    * @throws IOException
@@ -49,27 +49,27 @@ public class MainController {
   }
 
   /**
-   * Svo að ekki sé hægt að ýtta á skoða eða eyða buttons nema Ferd sé valið
+   * Svo að ekki sé hægt að ýtta á skoða eða eyða buttons nema uppskrift sé valið
    */
   private void disableButtons() {
-    fxSkodaButton.disableProperty().bind(fxListView.getSelectionModel().selectedItemProperty().isNull());
-    fxEydaButton.disableProperty().bind(fxListView.getSelectionModel().selectedItemProperty().isNull());
+    fxViewButton.disableProperty().bind(fxListView.getSelectionModel().selectedItemProperty().isNull());
+    fxRemoveButton.disableProperty().bind(fxListView.getSelectionModel().selectedItemProperty().isNull());
   }
 
   /**
-   * Hér birtum við ferðirnar í ListView
+   * Hér birtum við uppskriftirnar í ListView
    */
   private void displayListView() {
-    fxListView.setItems(ferdaplan.getList());
+    fxListView.setItems(recipeManager.getList());
   }
 
   /**
    * Fall sem keyrist þegar ýtt er á skoða hnapp
    */
   @FXML
-  private void onSkoda() {
-    Recipe currFerd = fxListView.getSelectionModel().getSelectedItem();
-    ViewSwitcher.switchTo(View.FERD, false, currFerd);
+  private void onView() {
+    Recipe currRecipe = fxListView.getSelectionModel().getSelectedItem();
+    ViewSwitcher.switchTo(View.FERD, false, currRecipe);
     hreinsaLabel();
   }
 
@@ -77,10 +77,10 @@ public class MainController {
    * Fall sem keyrist þegar ýtt er á nýja hnapp
    */
   @FXML
-  private void onNyr() {
-    Window owner = fxNyrButton.getScene().getWindow();
-    Optional<Recipe> result = FerdDialogWrapper.birtaDialog(owner);
-    result.ifPresent(ferd -> ferdaplan.newRecipe(ferd));
+  private void onNew() {
+    Window owner = fxNewButton.getScene().getWindow();
+    Optional<Recipe> result = RecipeDialogWrapper.birtaDialog(owner);
+    result.ifPresent(recipe -> recipeManager.newRecipe(recipe));
 
     if (result.isPresent()) {
       hreinsaLabel();
@@ -93,12 +93,12 @@ public class MainController {
    * Fall sem keyrist þegar ýtt er á eyða hnapp
    */
   @FXML
-  private void onEyda() {
-    boolean confirmed = StadfestingEydaDialogWrapper.birtaDialog(fxEydaButton.getScene().getWindow());
+  private void onRemove() {
+    boolean confirmed = RemoveRecipeDialogWrapper.birtaDialog(fxRemoveButton.getScene().getWindow());
 
     if (confirmed) {
-      Recipe valinFerd = fxListView.getSelectionModel().getSelectedItem();
-      ferdaplan.removeRecipe(valinFerd);
+      Recipe chosenRecipe = fxListView.getSelectionModel().getSelectedItem();
+      recipeManager.removeRecipe(chosenRecipe);
     }
     hreinsaLabel();
   }
