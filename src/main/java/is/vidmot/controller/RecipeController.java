@@ -13,22 +13,22 @@ import javafx.scene.control.TextField;
 public class RecipeController implements GognInterface {
 
   @FXML
-  TextField heitiField;
+  TextField nameField;
 
   @FXML
-  TextField afangastadurField;
+  TextField servingsField;
 
   @FXML
-  TextField dagsetningField;
+  TextField cookTimeField;
 
   @FXML
   private RecipeCard fxRecipeCard;
 
   @Override
-  public void setGogn(Recipe f) {
-    fxRecipeCard.getHeitiProperty().bind(f.nameProperty());
-    fxRecipeCard.getAfangastadurProperty().bind(f.descriptionProperty());
-    fxRecipeCard.getDagsetningProperty().bind(f.difficultyProperty());
+  public void setGogn(Recipe recipe) {
+    fxRecipeCard.getNamePropery().bind(recipe.nameProperty());
+    fxRecipeCard.getServingsProperty().bind(recipe.servingsProperty());
+    fxRecipeCard.getCookTimePropery().bind(recipe.cookTimeProperty());
   }
 
   /**

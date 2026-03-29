@@ -15,9 +15,9 @@ public class RecipeDialogController implements GognInterface {
   public void setGogn(Recipe recipe) {
     this.recipe = recipe;
     fxRecipeCard.setEditable(true);
-    fxRecipeCard.getHeitiProperty().bindBidirectional(recipe.nameProperty());
-    fxRecipeCard.getAfangastadurProperty().bindBidirectional(recipe.descriptionProperty());
-    fxRecipeCard.getDagsetningProperty().bindBidirectional(recipe.difficultyProperty());
+    fxRecipeCard.getNamePropery().bindBidirectional(recipe.nameProperty());
+    fxRecipeCard.getServingsProperty().bindBidirectional(recipe.servingsProperty());
+    fxRecipeCard.getCookTimePropery().bindBidirectional(recipe.cookTimeProperty());
   }
 
   public Recipe getRecipe() {
@@ -29,9 +29,13 @@ public class RecipeDialogController implements GognInterface {
    *
    *         Skoðar hvort TextField sé tómt þegar við búum til nýjar ferðir
    */
+  // public boolean erTomur() {
+  // return fxRecipeCard.getNamePropery().get().isBlank() ||
+  // fxRecipeCard.getServingsProperty().get().isBlank() ||
+  // fxRecipeCard.getCookTimePropery().get().isBlank();
+  // }
+
   public boolean erTomur() {
-    return fxRecipeCard.getHeitiProperty().get().isBlank() ||
-        fxRecipeCard.getAfangastadurProperty().get().isBlank() ||
-        fxRecipeCard.getDagsetningProperty().get().isBlank();
+    return fxRecipeCard.getNamePropery().get().isBlank();
   }
 }

@@ -9,31 +9,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/25"
-  stylesheets="@css/main.css"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.controller.MainController">
+<VBox alignment="CENTER" spacing="20.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.controller.MainController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
   <BorderPane prefHeight="200.0" prefWidth="200.0">
     <top>
-      <ListView fx:id="fxListView" prefHeight="200.0" prefWidth="200.0"
-        BorderPane.alignment="CENTER" />
+      <ListView fx:id="fxListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
     </top>
   </BorderPane>
   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
     <children>
-      <Button fx:id="fxSkodaButton" mnemonicParsing="false" onAction="#onSkoda" text="Skoða">
+      <Button fx:id="fxViewButton" mnemonicParsing="false" onAction="#onView" text="Skoða">
         <font>
           <Font size="16.0" />
         </font>
       </Button>
-      <Button fx:id="fxNyrButton" mnemonicParsing="false" text="Nýja" onAction="#onNyr">
+      <Button fx:id="fxNewButton" mnemonicParsing="false" onAction="#onNew" text="Nýja">
         <font>
           <Font size="16.0" />
         </font>
       </Button>
-      <Button fx:id="fxEydaButton" mnemonicParsing="false" text="Eyða" onAction="#onEyda">
+      <Button fx:id="fxRemoveButton" mnemonicParsing="false" onAction="#onRemove" text="Eyða">
         <font>
           <Font size="16.0" />
         </font>
