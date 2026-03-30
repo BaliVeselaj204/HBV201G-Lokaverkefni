@@ -72,7 +72,7 @@ public class ViewSwitcher {
         }
 
         Object controller = loader.getController();
-        if (controller instanceof GognInterface receiver && data != null) {
+        if (controller instanceof DataInterface receiver && data != null) {
           receiver.setGogn(data);
         }
       }

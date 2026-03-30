@@ -4,7 +4,7 @@ import is.vidmot.view.RecipeCard;
 import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
 
-public class RecipeDialogController implements GognInterface {
+public class RecipeDialogController implements DataInterface {
 
   @FXML
   private RecipeCard fxRecipeCard;
@@ -15,9 +15,7 @@ public class RecipeDialogController implements GognInterface {
   public void setGogn(Recipe recipe) {
     this.recipe = recipe;
     fxRecipeCard.setEditable(true);
-    fxRecipeCard.getNamePropery().bindBidirectional(recipe.nameProperty());
-    fxRecipeCard.getServingsProperty().bindBidirectional(recipe.servingsProperty());
-    fxRecipeCard.getCookTimePropery().bindBidirectional(recipe.cookTimeProperty());
+    fxRecipeCard.bindRecipe(recipe);
   }
 
   public Recipe getRecipe() {
@@ -27,15 +25,11 @@ public class RecipeDialogController implements GognInterface {
   /**
    * @return
    *
-   *         Skoðar hvort TextField sé tómt þegar við búum til nýjar ferðir
+   *         Skoðar hvort TextField sé tómt þegar við búum til nýjar uppskriftir
    */
-  // public boolean erTomur() {
-  // return fxRecipeCard.getNamePropery().get().isBlank() ||
-  // fxRecipeCard.getServingsProperty().get().isBlank() ||
-  // fxRecipeCard.getCookTimePropery().get().isBlank();
-  // }
-
   public boolean erTomur() {
-    return fxRecipeCard.getNamePropery().get().isBlank();
+    return recipe.getName() == null || recipe.getName().isBlank()
+        || recipe.getServings() <= 0
+        || recipe.getCookTime() <= 0;
   }
 }

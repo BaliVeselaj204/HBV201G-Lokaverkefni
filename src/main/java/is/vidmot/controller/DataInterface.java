@@ -2,6 +2,6 @@ package is.vidmot.controller;
 
 import is.vinnsla.Recipe;
 
-public interface GognInterface {
+public interface DataInterface {
   void setGogn(Recipe d);
 }

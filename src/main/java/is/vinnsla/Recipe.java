@@ -92,7 +92,7 @@ public class Recipe {
     this.calories.set(calories);
   }
 
-  public DoubleProperty proteinPropery() {
+  public DoubleProperty proteinProperty() {
     return protein;
   }
 
