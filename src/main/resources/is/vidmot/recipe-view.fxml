@@ -11,7 +11,7 @@
   xmlns:fx="http://javafx.com/fxml" stylesheets="@css/recipe.css" spacing="5"
   fx:controller="is.vidmot.controller.RecipeController">
 
-  <RecipeCard fx:id="fxRecipeCard" />
+  <RecipeCard fx:id="fxRecipeCard" alignment="CENTER" />
 
   <HBox alignment="CENTER">
     <Button text="Aftur" onAction="#fxOnBack" />
