@@ -4,103 +4,67 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="10" type="VBox" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-  <padding>
-    <Insets bottom="15" left="15" right="15" top="15" />
-  </padding>
+<fx:root type="VBox" spacing="15"
+         xmlns="http://javafx.com/javafx/25"
+         xmlns:fx="http://javafx.com/fxml/1">
 
-  <HBox alignment="CENTER" spacing="10">
-    <Label text="Name:">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-    <TextField fx:id="nameField" editable="false">
-         <font>
-            <Font size="16.0" />
-         </font></TextField>
-  </HBox>
-  <HBox alignment="CENTER" spacing="10">
-    <Label text="Servings:">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-    <TextField fx:id="servingsField" editable="false" promptText="0">
-         <font>
-            <Font size="16.0" />
-         </font></TextField>
-  </HBox>
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
-  <HBox alignment="CENTER" spacing="10">
-    <Label text="Time:">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-    <TextField fx:id="cookTimeField" editable="false" promptText="0m">
-         <font>
-            <Font size="16.0" />
-         </font></TextField>
-  </HBox>
-   <HBox alignment="CENTER" layoutX="25.0" layoutY="207.0" spacing="10">
-      <children>
-         <Label text="Calories">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Label>
-         <TextField fx:id="caloriesField" editable="false" promptText="0kcal">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-      </children>
-   </HBox>
-   <HBox alignment="CENTER" layoutX="25.0" layoutY="131.0" spacing="10">
-      <children>
-         <Label text="Protein/Carbs/Fat">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Label>
-         <TextField fx:id="proteinField" editable="false" prefWidth="70.0" promptText="0g">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-         <TextField fx:id="carbsField" prefWidth="70.0" promptText="0g">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-         <TextField fx:id="fatField" prefWidth="70.0" promptText="0g">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-      </children>
-   </HBox>
-   <HBox alignment="CENTER" layoutX="25.0" layoutY="328.0" spacing="10">
-      <children>
-         <Label text="Difficulty:">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Label>
-         <ComboBox fx:id="diffComboBox" prefWidth="150.0" promptText="Choose" />
-      </children>
-   </HBox>
-   <HBox alignment="CENTER" layoutX="25.0" layoutY="349.0" spacing="10">
-      <children>
-         <Label text="Description:">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Label>
-         <TextArea fx:id="descriptionArea" prefHeight="200.0" prefWidth="200.0" />
-      </children>
-   </HBox>
+    <VBox alignment="CENTER" spacing="10">
+        <ImageView fx:id="recipeImage"
+                   fitHeight="150"
+                   fitWidth="150"
+                   preserveRatio="true"
+                   style="-fx-border-color: lightgray; -fx-border-radius: 10;"/>
+
+        <Button text="Choose Image" fx:id="imageButton"/>
+    </VBox>
+
+    <GridPane hgap="10" vgap="12">
+
+        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nameField" editable="false"
+                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Servings:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="servingsField" promptText="0"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Time:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="cookTimeField" promptText="0m"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Calories:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="caloriesField" promptText="0 kcal"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Macros:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <HBox spacing="8" GridPane.rowIndex="4" GridPane.columnIndex="1">
+            <TextField fx:id="proteinField" promptText="Protein"/>
+            <TextField fx:id="carbsField" promptText="Carbs"/>
+            <TextField fx:id="fatField" promptText="Fat"/>
+        </HBox>
+
+        <Label text="Difficulty:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="diffComboBox"
+                  GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+    <VBox spacing="5">
+        <Label text="Description:"/>
+        <TextArea fx:id="descriptionArea" prefHeight="150"/>
+    </VBox>
+
 </fx:root>
