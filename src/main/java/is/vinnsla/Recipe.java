@@ -1,11 +1,15 @@
 package is.vinnsla;
 
+import java.util.List;
+
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Recipe
@@ -25,11 +29,10 @@ public class Recipe {
   private StringProperty difficulty = new SimpleStringProperty();
 
   // Need to create Ingredient class first
-  // private ObservableList<Ingredient> ingredients =
-  // FXCollections.observableArrayList();
+  private ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
 
   public Recipe(String name, String description, int cookTime, int calories, double protein, double carbs, double fat,
-      int servings, String difficulty) {
+      int servings, String difficulty, List<Ingredient> ingredients) {
     this.setName(name);
     this.setDescription(description);
     this.setCookTime(cookTime);
@@ -39,6 +42,7 @@ public class Recipe {
     this.setFat(fat);
     this.setServings(servings);
     this.setDifficulty(difficulty);
+    this.ingredients = FXCollections.observableArrayList(ingredients);
   }
 
   public Recipe() {

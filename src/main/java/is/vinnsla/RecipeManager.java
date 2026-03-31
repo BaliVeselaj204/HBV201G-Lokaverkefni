@@ -9,13 +9,23 @@ import javafx.collections.ObservableList;
 public class RecipeManager {
   private ObservableList<Recipe> list;
 
-    public RecipeManager() {
+  public RecipeManager() {
     list = FXCollections.observableArrayList(
-            new Recipe("Hot dog", "Put the hot dog into water and heat until boiling",
-                    10, 400, 10.0, 25.0, 15.0, 1, "Easy"),
-            new Recipe("Pizza", "Flatten out the dough, put the toppings on and heat in a 200°C oven for 12-15min.",
-                    30, 600, 20.0, 40.0, 15.0, 2, "Easy")
-    );;
+        new Recipe(
+            "Hot dog",
+            "Put the hot dog into water and heat until boiling",
+            10, 400, 10.0, 25.0, 15.0, 1,
+            "Easy",
+            FXCollections.observableArrayList(
+                new Ingredient("Bread", 1, "pc"),
+                new Ingredient("Hot dog sausage", 1, "pc"))),
+        new Recipe(
+            "Pizza",
+            "Flatten out the dough, put the toppings on and heat in a 200°C oven for 12-15min.", 30,
+            600, 20.0, 40.0, 15.0, 2, "Easy",
+            FXCollections.observableArrayList(
+                new Ingredient("Bread", 1, "pc"),
+                new Ingredient("Cheese", 1, "pc"))));
   }
 
   public ObservableList<Recipe> getList() {
@@ -25,7 +35,7 @@ public class RecipeManager {
   /**
    * @param recipe
    *
-   *             Bætir við nýju uppskrift í lista
+   *               Bætir við nýju uppskrift í lista
    */
   public void newRecipe(Recipe recipe) {
     getList().add(recipe);
@@ -34,7 +44,7 @@ public class RecipeManager {
   /**
    * @param recipe
    *
-   *             Eyðir uppskrift úr lista
+   *               Eyðir uppskrift úr lista
    */
   public void removeRecipe(Recipe recipe) {
     getList().remove(recipe);
