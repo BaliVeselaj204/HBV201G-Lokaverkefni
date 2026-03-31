@@ -17,6 +17,7 @@ public class RecipeController implements DataInterface {
   @Override
   public void setGogn(Recipe recipe) {
     fxRecipeCard.bindRecipe(recipe);
+    fxRecipeCard.setEditable(false);
   }
 
   /**

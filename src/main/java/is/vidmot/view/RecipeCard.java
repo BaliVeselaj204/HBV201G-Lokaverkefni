@@ -84,6 +84,6 @@ public class RecipeCard extends VBox {
     carbsField.setEditable(editable);
     fatField.setEditable(editable);
     descriptionArea.setEditable(editable);
-    diffComboBox.setEditable(editable);
+    diffComboBox.setDisable(!editable);
   }
 }
