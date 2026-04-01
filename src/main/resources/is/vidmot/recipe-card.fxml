@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -29,7 +30,7 @@
          </font></Button>
     </VBox>
 
-    <GridPane hgap="10" vgap="12">
+    <GridPane alignment="CENTER" hgap="10" vgap="12">
 
         <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0">
          <font>
@@ -105,13 +106,37 @@
       </rowConstraints>
 
     </GridPane>
-
-    <VBox spacing="5">
-        <Label text="Description:">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-        <TextArea fx:id="descriptionArea" maxWidth="400.0" prefHeight="150" prefWidth="400.0" />
-    </VBox>
+   <HBox alignment="CENTER">
+      <children>
+      
+          <VBox spacing="5">
+              <Label text="Description:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+              <TextArea fx:id="descriptionArea" prefHeight="150.0" prefWidth="300.0" />
+          </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <HBox prefWidth="200.0">
+                  <children>
+                     <Label text="Ingredients: ">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Button mnemonicParsing="false" text="+" />
+                  </children>
+               </HBox>
+               <ListView minWidth="300.0" prefHeight="150.0">
+                  <VBox.margin>
+                     <Insets left="2.0" top="1.0" />
+                  </VBox.margin>
+               </ListView>
+            </children>
+         </VBox>
+      </children>
+   </HBox>
 
 </fx:root>

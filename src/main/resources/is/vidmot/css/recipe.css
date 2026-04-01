@@ -3,7 +3,7 @@
     -fx-font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.button {
+#fxBackButton {
     -fx-background-color: #3498db;
     -fx-text-fill: white;
     -fx-font-size: 16px;
@@ -12,11 +12,11 @@
     -fx-cursor: hand;
 }
 
-.button:hover {
+#fxBackButton:hover {
     -fx-background-color: #2980b9;
 }
 
-.button:pressed {
+#fxBackButton:pressed {
     -fx-background-color: #1f6391;
 }
 
