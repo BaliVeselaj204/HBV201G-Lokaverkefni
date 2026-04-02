@@ -48,6 +48,18 @@ public class Recipe {
   public Recipe() {
   }
 
+public ObservableList<Ingredient> getIngredientsList() {
+    return ingredients;
+  }
+
+  public void newRecipe(Ingredient ingredient) {
+    ingredients.add(ingredient);
+  }
+
+  public void removeRecipe(Ingredient ingredient) {
+    ingredients.remove(ingredient);
+  }
+
   public StringProperty nameProperty() {
     return name;
   }

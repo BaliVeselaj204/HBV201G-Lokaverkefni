@@ -2,12 +2,15 @@ package is.vidmot.view;
 
 import java.io.IOException;
 
+import is.vinnsla.Ingredient;
 import is.vinnsla.Recipe;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -52,6 +55,9 @@ public class RecipeCard extends VBox {
   @FXML
   private Label fxDiffLabel;
 
+  @FXML
+  private ListView<Ingredient> fxIngredientsListView;
+
   private final NumberStringConverter converter = new NumberStringConverter();
 
   public RecipeCard() {
@@ -65,6 +71,10 @@ public class RecipeCard extends VBox {
     }
 
     diffComboBox.getItems().addAll("Easy", "Medium", "Hard");
+  }
+
+  public void setIngredients(Recipe recipe) {
+    fxIngredientsListView.setItems(recipe.getIngredientsList());
   }
 
   public void bindRecipe(Recipe recipe) {

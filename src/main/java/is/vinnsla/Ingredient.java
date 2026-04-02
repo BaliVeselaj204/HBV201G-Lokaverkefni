@@ -55,4 +55,9 @@ public class Ingredient {
   public void setUnit(String unit) {
     this.unit.set(unit);
   }
+
+  @Override
+  public String toString() {
+    return name.get();
+  }
 }
