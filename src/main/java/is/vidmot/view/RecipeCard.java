@@ -2,9 +2,9 @@ package is.vidmot.view;
 
 import java.io.IOException;
 
+import is.vinnsla.FieldFormatter;
 import is.vinnsla.Ingredient;
 import is.vinnsla.Recipe;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -15,7 +15,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.util.converter.NumberStringConverter;
 
 public class RecipeCard extends VBox {
 
@@ -58,7 +57,8 @@ public class RecipeCard extends VBox {
   @FXML
   private ListView<Ingredient> fxIngredientsListView;
 
-  private final NumberStringConverter converter = new NumberStringConverter();
+  @FXML
+  private Button fxAddIngredientButton;
 
   public RecipeCard() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/is/vidmot/recipe-card.fxml"));
@@ -78,14 +78,18 @@ public class RecipeCard extends VBox {
   }
 
   public void bindRecipe(Recipe recipe) {
+    FieldFormatter formatter = new FieldFormatter();
     nameField.textProperty().bindBidirectional(recipe.nameProperty());
-    servingsField.textProperty().bindBidirectional(recipe.servingsProperty(), converter);
-    cookTimeField.textProperty().bindBidirectional(recipe.cookTimeProperty(), converter);
-    caloriesField.textProperty().bindBidirectional(recipe.caloriesProperty(), converter);
-    proteinField.textProperty().bindBidirectional(recipe.proteinProperty(), converter);
-    carbsField.textProperty().bindBidirectional(recipe.carbsProperty(), converter);
-    fatField.textProperty().bindBidirectional(recipe.fatProperty(), converter);
+    formatter.bindIntegerField(servingsField, recipe.servingsProperty());
+    formatter.bindIntegerField(cookTimeField, recipe.cookTimeProperty());
+    formatter.bindIntegerField(caloriesField, recipe.caloriesProperty());
+
+    formatter.bindDoubleField(proteinField, recipe.proteinProperty());
+    formatter.bindDoubleField(carbsField, recipe.carbsProperty());
+    formatter.bindDoubleField(fatField, recipe.fatProperty());
+
     descriptionArea.textProperty().bindBidirectional(recipe.descriptionProperty());
+
     diffComboBox.valueProperty().bindBidirectional(recipe.difficultyProperty());
     fxDiffLabel.textProperty().bindBidirectional(recipe.difficultyProperty());
   }
@@ -106,5 +110,6 @@ public class RecipeCard extends VBox {
     imageButton.setVisible(visible);
     diffComboBox.setVisible(visible);
     fxDiffLabel.setVisible(!visible);
+    fxAddIngredientButton.setVisible(visible);
   }
 }

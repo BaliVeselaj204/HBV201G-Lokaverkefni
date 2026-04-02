@@ -45,7 +45,7 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-        <TextField fx:id="servingsField" maxWidth="320.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField fx:id="servingsField" maxWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -54,7 +54,7 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-        <TextField fx:id="cookTimeField" maxWidth="320.0" promptText="0m" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <TextField fx:id="cookTimeField" maxWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -63,25 +63,25 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-        <TextField fx:id="caloriesField" maxWidth="320.0" promptText="0 kcal" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <TextField fx:id="caloriesField" maxWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="16.0" />
          </font></TextField>
 
-        <Label text="Macros:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <Label text="Protein/Carbs/Fat" GridPane.columnIndex="0" GridPane.rowIndex="4">
          <font>
             <Font size="16.0" />
          </font></Label>
         <HBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="4">
-            <TextField fx:id="proteinField" maxWidth="100.0" promptText="Protein">
+            <TextField fx:id="proteinField" maxWidth="100.0">
             <font>
                <Font size="16.0" />
             </font></TextField>
-            <TextField fx:id="carbsField" maxWidth="100.0" promptText="Carbs">
+            <TextField fx:id="carbsField" maxWidth="100.0">
             <font>
                <Font size="16.0" />
             </font></TextField>
-            <TextField fx:id="fatField" maxWidth="100.0" promptText="Fat">
+            <TextField fx:id="fatField" maxWidth="100.0">
             <font>
                <Font size="16.0" />
             </font></TextField>
