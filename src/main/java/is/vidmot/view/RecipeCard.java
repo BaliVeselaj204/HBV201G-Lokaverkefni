@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -48,6 +49,9 @@ public class RecipeCard extends VBox {
   @FXML
   private TextArea descriptionArea;
 
+  @FXML
+  private Label fxDiffLabel;
+
   private final NumberStringConverter converter = new NumberStringConverter();
 
   public RecipeCard() {
@@ -73,6 +77,7 @@ public class RecipeCard extends VBox {
     fatField.textProperty().bindBidirectional(recipe.fatProperty(), converter);
     descriptionArea.textProperty().bindBidirectional(recipe.descriptionProperty());
     diffComboBox.valueProperty().bindBidirectional(recipe.difficultyProperty());
+    fxDiffLabel.textProperty().bindBidirectional(recipe.difficultyProperty());
   }
 
   public void setEditable(boolean editable) {
@@ -85,5 +90,11 @@ public class RecipeCard extends VBox {
     fatField.setEditable(editable);
     descriptionArea.setEditable(editable);
     diffComboBox.setDisable(!editable);
+  }
+
+  public void show(boolean visible) {
+    imageButton.setVisible(visible);
+    diffComboBox.setVisible(visible);
+    fxDiffLabel.setVisible(!visible);
   }
 }

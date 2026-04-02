@@ -87,11 +87,24 @@
             </font></TextField>
         </HBox>
 
-        <Label text="Difficulty:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+              <Label text="Difficulty:" GridPane.columnIndex="0" GridPane.rowIndex="5">
          <font>
             <Font size="16.0" />
-         </font></Label>
-        <ComboBox fx:id="diffComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <children>
+              <ComboBox fx:id="diffComboBox" />
+            <Label fx:id="fxDiffLabel">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
       <columnConstraints>
          <ColumnConstraints />
          <ColumnConstraints />
