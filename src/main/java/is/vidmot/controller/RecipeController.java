@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 /**
  * RecipeController
  */
-public class RecipeController implements DataInterface {
+public class RecipeController implements DataInterface<Recipe> {
 
   @FXML
   private RecipeCard fxRecipeCard;

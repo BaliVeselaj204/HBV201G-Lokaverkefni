@@ -2,6 +2,9 @@ package is.vidmot.view;
 
 import java.io.IOException;
 
+import java.util.Optional;
+import is.vidmot.controller.IngredientDialogController;
+import is.vidmot.controller.IngredientDialogWrapper;
 import is.vinnsla.FieldFormatter;
 import is.vinnsla.Ingredient;
 import is.vinnsla.Recipe;
@@ -15,6 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Window;
 
 public class RecipeCard extends VBox {
 
@@ -59,6 +63,8 @@ public class RecipeCard extends VBox {
 
   @FXML
   private Button fxAddIngredientButton;
+
+  Recipe recipe = new Recipe();
 
   public RecipeCard() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/is/vidmot/recipe-card.fxml"));
@@ -111,5 +117,12 @@ public class RecipeCard extends VBox {
     diffComboBox.setVisible(visible);
     fxDiffLabel.setVisible(!visible);
     fxAddIngredientButton.setVisible(visible);
+  }
+
+  @FXML
+  private void onNew() {
+    Window owner = fxAddIngredientButton.getScene().getWindow();
+    Optional<Ingredient> result = IngredientDialogWrapper.birtaDialog(owner);
+    result.ifPresent(ingredient -> recipe.newIngredient(ingredient));
   }
 }

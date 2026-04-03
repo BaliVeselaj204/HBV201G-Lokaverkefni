@@ -139,7 +139,7 @@
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Button fx:id="fxAddIngredientButton" mnemonicParsing="false" text="+" />
+                     <Button fx:id="fxAddIngredientButton" mnemonicParsing="false" onAction="#onNew" text="+" />
                   </children>
                </HBox>
                <ListView fx:id="fxIngredientsListView" minWidth="300.0" prefHeight="150.0">

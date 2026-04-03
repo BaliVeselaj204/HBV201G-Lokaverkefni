@@ -20,6 +20,9 @@ public class Ingredient {
     this.setUnit(unit);
   }
 
+  public Ingredient() {
+  }
+
   public StringProperty nameProperty() {
     return name;
   }

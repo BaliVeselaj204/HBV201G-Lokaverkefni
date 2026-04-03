@@ -28,7 +28,6 @@ public class Recipe {
   private IntegerProperty servings = new SimpleIntegerProperty();
   private StringProperty difficulty = new SimpleStringProperty();
 
-  // Need to create Ingredient class first
   private ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
 
   public Recipe(String name, String description, int cookTime, int calories, double protein, double carbs, double fat,
@@ -48,15 +47,15 @@ public class Recipe {
   public Recipe() {
   }
 
-public ObservableList<Ingredient> getIngredientsList() {
+  public ObservableList<Ingredient> getIngredientsList() {
     return ingredients;
   }
 
-  public void newRecipe(Ingredient ingredient) {
+  public void newIngredient(Ingredient ingredient) {
     ingredients.add(ingredient);
   }
 
-  public void removeRecipe(Ingredient ingredient) {
+  public void removeIngredient(Ingredient ingredient) {
     ingredients.remove(ingredient);
   }
 

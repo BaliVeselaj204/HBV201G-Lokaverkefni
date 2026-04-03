@@ -4,7 +4,7 @@ import is.vidmot.view.RecipeCard;
 import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
 
-public class RecipeDialogController implements DataInterface {
+public class RecipeDialogController implements DataInterface<Recipe> {
 
   @FXML
   private RecipeCard fxRecipeCard;
