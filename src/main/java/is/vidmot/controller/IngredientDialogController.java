@@ -12,10 +12,11 @@ public class IngredientDialogController implements DataInterface<Ingredient> {
   @FXML
   private IngredientCard fxIngredientCard;
 
-  private Ingredient ingredient;
+  private Ingredient ingredient = new Ingredient();
 
   @Override
   public void setGogn(Ingredient ingredient) {
+    this.ingredient = ingredient;
     fxIngredientCard.bindIngredient(ingredient);
   }
 

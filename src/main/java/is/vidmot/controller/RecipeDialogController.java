@@ -14,6 +14,7 @@ public class RecipeDialogController implements DataInterface<Recipe> {
   @Override
   public void setGogn(Recipe recipe) {
     this.recipe = recipe;
+    fxRecipeCard.setRecipe(recipe);
     fxRecipeCard.setEditable(true);
     fxRecipeCard.show(true);
     fxRecipeCard.bindRecipe(recipe);

@@ -26,7 +26,7 @@ public class FieldFormatter {
   public void bindIntegerField(TextField field, IntegerProperty property) {
     TextFormatter<Integer> formatter = new TextFormatter<Integer>(
         new IntegerStringConverter(),
-        0,
+        property.get(),
         intFilter);
     field.setTextFormatter(formatter);
     formatter.valueProperty().bindBidirectional(property.asObject());
@@ -35,7 +35,7 @@ public class FieldFormatter {
   public void bindDoubleField(TextField field, DoubleProperty property) {
     TextFormatter<Double> formatter = new TextFormatter<Double>(
         new DoubleStringConverter(),
-        0.0,
+        property.get(),
         doubleFilter);
     field.setTextFormatter(formatter);
     formatter.valueProperty().bindBidirectional(property.asObject());
