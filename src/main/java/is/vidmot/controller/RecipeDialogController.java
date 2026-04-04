@@ -29,9 +29,7 @@ public class RecipeDialogController implements DataInterface<Recipe> {
    *
    *         Skoðar hvort TextField sé tómt þegar við búum til nýjar uppskriftir
    */
-  public boolean erTomur() {
-    return recipe.getName() == null || recipe.getName().isBlank()
-        || recipe.getServings() <= 0
-        || recipe.getCookTime() <= 0;
+  public boolean isEmpty() {
+    return fxRecipeCard.isEmpty();
   }
 }

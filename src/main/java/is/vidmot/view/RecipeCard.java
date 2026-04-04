@@ -82,7 +82,6 @@ public class RecipeCard extends VBox {
     this.recipe = recipe;
     bindRecipe(recipe);
     fxIngredientsListView.setItems(recipe.getIngredientsList());
-    System.out.println("setRecipe called with: " + recipe);
   }
 
   public void bindRecipe(Recipe recipe) {
@@ -121,15 +120,22 @@ public class RecipeCard extends VBox {
     fxAddIngredientButton.setVisible(visible);
   }
 
+  public boolean isEmpty() {
+    String name = nameField.getText();
+    String servings = servingsField.getText();
+    String cookTime = cookTimeField.getText();
+
+    return name == null || name.isBlank()
+        || servings == null || servings.isBlank()
+        || cookTime == null || cookTime.isBlank();
+  }
+
   @FXML
   private void onNew() {
     Window owner = fxAddIngredientButton.getScene().getWindow();
     Optional<Ingredient> result = IngredientDialogWrapper.birtaDialog(owner);
     result.ifPresent(ingredient -> {
       recipe.newIngredient(ingredient);
-      // System.out.println("Ingredient added: " + ingredient);
-      // System.out.println("Ingredients list size: " +
-      // recipe.getIngredientsList().size());
     });
   }
 }

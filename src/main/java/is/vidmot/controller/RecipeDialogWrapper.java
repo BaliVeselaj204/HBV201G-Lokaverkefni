@@ -36,7 +36,7 @@ public class RecipeDialogWrapper {
       dialog.setTitle("New Recipe");
 
       dialog.setResultConverter(buttonType -> {
-        if (buttonType == ButtonType.OK && !controller.erTomur()) {
+        if (buttonType == ButtonType.OK && !controller.isEmpty()) {
           return controller.getRecipe();
         }
         return null;
