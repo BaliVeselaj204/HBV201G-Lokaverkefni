@@ -17,7 +17,6 @@ public class RecipeDialogController implements DataInterface<Recipe> {
     fxRecipeCard.setRecipe(recipe);
     fxRecipeCard.setEditable(true);
     fxRecipeCard.show(true);
-    fxRecipeCard.bindRecipe(recipe);
   }
 
   public Recipe getRecipe() {

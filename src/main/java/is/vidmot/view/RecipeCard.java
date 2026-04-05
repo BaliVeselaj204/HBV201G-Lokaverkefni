@@ -15,9 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
+import java.io.File;
 
 public class RecipeCard extends VBox {
 
@@ -99,6 +103,7 @@ public class RecipeCard extends VBox {
 
     diffComboBox.valueProperty().bindBidirectional(recipe.difficultyProperty());
     fxDiffLabel.textProperty().bindBidirectional(recipe.difficultyProperty());
+    recipeImage.imageProperty().bindBidirectional(recipe.imageProperty());
   }
 
   public void setEditable(boolean editable) {
@@ -137,5 +142,31 @@ public class RecipeCard extends VBox {
     result.ifPresent(ingredient -> {
       recipe.newIngredient(ingredient);
     });
+  }
+
+  @FXML
+  private void onImageButton() {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choose an image");
+
+    fileChooser.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("Image Files",
+            "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.webp", "*.tiff", "*.tif", "*.ico"),
+        new FileChooser.ExtensionFilter("PNG", "*.png"),
+        new FileChooser.ExtensionFilter("JPG/JPEG", "*.jpg", "*.jpeg"),
+        new FileChooser.ExtensionFilter("GIF", "*.gif"),
+        new FileChooser.ExtensionFilter("WebP", "*.webp"),
+        new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+    Stage stage = (Stage) imageButton.getScene().getWindow();
+    File selectedImage = fileChooser.showOpenDialog(stage);
+    showImage(selectedImage);
+  }
+
+  private void showImage(File selectedImage) {
+    if (selectedImage != null) {
+      Image image = new Image(selectedImage.toURI().toString());
+      recipeImage.setImage(image);
+    }
   }
 }

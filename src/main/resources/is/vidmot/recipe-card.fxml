@@ -24,7 +24,7 @@
     <VBox alignment="CENTER" spacing="10">
         <ImageView fx:id="recipeImage" fitHeight="150" fitWidth="150" preserveRatio="true" style="-fx-border-color: lightgray; -fx-border-radius: 10;" />
 
-        <Button fx:id="imageButton" text="Choose Image">
+        <Button fx:id="imageButton" onAction="#onImageButton" text="Choose Image">
          <font>
             <Font size="16.0" />
          </font></Button>

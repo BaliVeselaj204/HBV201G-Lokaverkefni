@@ -24,20 +24,36 @@ public class FieldFormatter {
   };
 
   public void bindIntegerField(TextField field, IntegerProperty property) {
-    TextFormatter<Integer> formatter = new TextFormatter<Integer>(
+    TextFormatter<Integer> formatter = new TextFormatter<>(
         new IntegerStringConverter(),
-        null,
+        property.get(),
         intFilter);
     field.setTextFormatter(formatter);
-    formatter.valueProperty().bindBidirectional(property.asObject());
+
+    formatter.valueProperty().addListener((obs, oldVal, newVal) -> {
+      if (newVal != null)
+        property.set(newVal);
+    });
+
+    property.addListener((obs, oldVal, newVal) -> {
+      formatter.setValue(newVal.intValue());
+    });
   }
 
   public void bindDoubleField(TextField field, DoubleProperty property) {
-    TextFormatter<Double> formatter = new TextFormatter<Double>(
+    TextFormatter<Double> formatter = new TextFormatter<>(
         new DoubleStringConverter(),
-        null,
+        property.get(),
         doubleFilter);
     field.setTextFormatter(formatter);
-    formatter.valueProperty().bindBidirectional(property.asObject());
+
+    formatter.valueProperty().addListener((obs, oldVal, newVal) -> {
+      if (newVal != null)
+        property.set(newVal);
+    });
+
+    property.addListener((obs, oldVal, newVal) -> {
+      formatter.setValue(newVal.doubleValue());
+    });
   }
 }

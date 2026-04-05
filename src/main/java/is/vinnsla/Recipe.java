@@ -4,12 +4,15 @@ import java.util.List;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 
 /**
  * Recipe
@@ -29,9 +32,10 @@ public class Recipe {
   private StringProperty difficulty = new SimpleStringProperty();
 
   private ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
+  private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
 
   public Recipe(String name, String description, int cookTime, int calories, double protein, double carbs, double fat,
-      int servings, String difficulty, List<Ingredient> ingredients) {
+      int servings, String difficulty, List<Ingredient> ingredients, Image image) {
     this.setName(name);
     this.setDescription(description);
     this.setCookTime(cookTime);
@@ -41,10 +45,28 @@ public class Recipe {
     this.setFat(fat);
     this.setServings(servings);
     this.setDifficulty(difficulty);
+    this.setImage(image);
     this.ingredients = FXCollections.observableArrayList(ingredients);
   }
 
+  public Recipe(String name, String description, int cookTime, int calories, double protein, double carbs, double fat,
+      int servings, String difficulty, List<Ingredient> ingredients) {
+    this(name, description, cookTime, calories, protein, carbs, fat, servings, difficulty, ingredients, null);
+  }
+
   public Recipe() {
+  }
+
+  public ObjectProperty<Image> imageProperty() {
+    return image;
+  }
+
+  public Image getImage() {
+    return image.get();
+  }
+
+  public void setImage(Image image) {
+    this.image.set(image);
   }
 
   public ObservableList<Ingredient> getIngredientsList() {
