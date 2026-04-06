@@ -32,6 +32,7 @@ public class Recipe {
   private StringProperty difficulty = new SimpleStringProperty();
 
   private ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
+  private StringProperty imagePath = new SimpleStringProperty();
   private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
 
   public Recipe(String name, String description, int cookTime, int calories, double protein, double carbs, double fat,
@@ -55,6 +56,14 @@ public class Recipe {
   }
 
   public Recipe() {
+  }
+
+  public String getImagePath() {
+    return imagePath.get();
+  }
+
+  public void setImagePath(String path) {
+    imagePath.set(path);
   }
 
   public ObjectProperty<Image> imageProperty() {

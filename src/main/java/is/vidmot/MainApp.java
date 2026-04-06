@@ -9,6 +9,8 @@ import java.io.IOException;
 
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
+import is.vinnsla.DatabaseManager;
+import is.vinnsla.RecipeManager;
 
 public class MainApp extends Application {
   @Override
@@ -20,5 +22,8 @@ public class MainApp extends Application {
     stage.setResizable(false);
     stage.setTitle("Recipe Manager");
     stage.show();
+
+    DatabaseManager.initialize();
+    DatabaseManager.loadAllRecipes().forEach(recipe -> RecipeManager.getInstance().newRecipe(recipe));
   }
 }

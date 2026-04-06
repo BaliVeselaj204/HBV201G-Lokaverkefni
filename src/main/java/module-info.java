@@ -3,6 +3,7 @@ module is.vidmot {
   requires javafx.fxml;
   requires javafx.graphics;
   requires javafx.base;
+  requires java.sql;
 
   exports is.vidmot.view;
 

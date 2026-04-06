@@ -6,6 +6,11 @@ target/
 compile.sh
 run.sh
 
+# SQLite database
+*.db
+*.db-shm
+*.db-wal
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
+import is.vinnsla.DatabaseManager;
 import is.vinnsla.Recipe;
 import is.vinnsla.RecipeManager;
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ public class MainController {
   @FXML
   private Button fxRemoveButton;
 
-  RecipeManager recipeManager = new RecipeManager();
+  RecipeManager recipeManager = RecipeManager.getInstance();
 
   /**
    * @throws IOException
@@ -80,7 +81,10 @@ public class MainController {
   private void onNew() {
     Window owner = fxNewButton.getScene().getWindow();
     Optional<Recipe> result = RecipeDialogWrapper.birtaDialog(owner);
-    result.ifPresent(recipe -> recipeManager.newRecipe(recipe));
+    result.ifPresent(recipe -> {
+      recipeManager.newRecipe(recipe);
+      DatabaseManager.saveRecipe(recipe);
+    });
 
     if (result.isPresent()) {
       hreinsaLabel();

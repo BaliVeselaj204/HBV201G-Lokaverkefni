@@ -1,7 +1,9 @@
 package is.vidmot.view;
 
 import java.io.IOException;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import is.vidmot.controller.IngredientDialogWrapper;
 import is.vinnsla.FieldFormatter;
@@ -165,8 +167,19 @@ public class RecipeCard extends VBox {
 
   private void showImage(File selectedImage) {
     if (selectedImage != null) {
-      Image image = new Image(selectedImage.toURI().toString());
-      recipeImage.setImage(image);
+      try {
+        Path appImages = Path.of(System.getProperty("user.home"), ".myrecipeapp", "images");
+        Files.createDirectories(appImages);
+        Path dest = appImages.resolve(selectedImage.getName());
+        Files.copy(selectedImage.toPath(), dest, StandardCopyOption.REPLACE_EXISTING);
+
+        Image image = new Image(dest.toUri().toString());
+        recipeImage.setImage(image);
+        recipe.setImagePath(dest.toString());
+
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 }
