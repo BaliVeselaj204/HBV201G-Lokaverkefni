@@ -128,7 +128,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-              <TextArea fx:id="descriptionArea" prefHeight="150.0" prefWidth="300.0" />
+              <TextArea fx:id="descriptionArea" prefHeight="150.0" prefWidth="300.0" wrapText="true" />
           </VBox>
          <VBox prefHeight="200.0" prefWidth="100.0">
             <children>

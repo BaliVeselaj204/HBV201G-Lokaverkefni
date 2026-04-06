@@ -103,6 +103,7 @@ public class MainController {
     if (confirmed) {
       Recipe chosenRecipe = fxListView.getSelectionModel().getSelectedItem();
       recipeManager.removeRecipe(chosenRecipe);
+      DatabaseManager.deleteRecipe(chosenRecipe.getName());
     }
     hreinsaLabel();
   }
