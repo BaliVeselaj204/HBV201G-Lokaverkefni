@@ -8,7 +8,9 @@ import is.vidmot.switcher.ViewSwitcher;
 import is.vinnsla.DatabaseManager;
 import is.vinnsla.Recipe;
 import is.vinnsla.RecipeManager;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Window;
@@ -17,6 +19,9 @@ import javafx.scene.control.Button;
 public class MainController {
   @FXML
   private ListView<Recipe> fxListView;
+
+  @FXML
+  private ComboBox<String> sortComboBox;
 
   @FXML
   private Label fxLabel;
@@ -40,6 +45,7 @@ public class MainController {
   public void initialize() throws IOException {
     displayListView();
     disableButtons();
+    initializeSortComboBox();
   }
 
   /**
@@ -106,5 +112,56 @@ public class MainController {
       DatabaseManager.deleteRecipe(chosenRecipe.getName());
     }
     hreinsaLabel();
+  }
+
+  // Method to initialize ComboBox with sorting options
+  private void initializeSortComboBox() {
+    sortComboBox.getItems().addAll("Time", "Protein", "Calories", "Difficulty");
+    sortComboBox.setOnAction(e -> onSort());  // Trigger sort when selection changes
+  }
+
+  private void onSort() {
+    String selectedSort = sortComboBox.getSelectionModel().getSelectedItem();
+    if (selectedSort != null) {
+      switch (selectedSort) {
+        case "Time":
+          sortByCookTime();
+          break;
+        case "Protein":
+          sortByProtein();
+          break;
+        case "Calories":
+          sortByCalories();
+          break;
+        case "Difficulty":
+          sortByDifficulty();
+          break;
+      }
+    }
+  }
+
+  // Sorting methods
+  private void sortByCookTime() {
+    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
+    sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCookTime(), r2.getCookTime()));
+    fxListView.setItems(sortedRecipes);
+  }
+
+  private void sortByProtein() {
+    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
+    sortedRecipes.setComparator((r1, r2) -> Double.compare(r1.getProtein(), r2.getProtein()));
+    fxListView.setItems(sortedRecipes);
+  }
+
+  private void sortByCalories() {
+    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
+    sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCalories(), r2.getCalories()));
+    fxListView.setItems(sortedRecipes);
+  }
+
+  private void sortByDifficulty() {
+    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
+    sortedRecipes.setComparator((r1, r2) -> r1.getDifficulty().compareTo(r2.getDifficulty()));
+    fxListView.setItems(sortedRecipes);
   }
 }
