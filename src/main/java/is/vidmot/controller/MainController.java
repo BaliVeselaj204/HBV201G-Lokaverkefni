@@ -10,11 +10,10 @@ import is.vinnsla.Recipe;
 import is.vinnsla.RecipeManager;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Window;
-import javafx.scene.control.Button;
+import javafx.util.Callback;
 
 public class MainController {
   @FXML
@@ -68,6 +67,36 @@ public class MainController {
    */
   private void displayListView() {
     fxListView.setItems(recipeManager.getList());
+
+    // Set custom cell factory to display multiple fields in the ListView
+    fxListView.setCellFactory(new Callback<ListView<Recipe>, ListCell<Recipe>>() {
+      @Override
+      public ListCell<Recipe> call(ListView<Recipe> param) {
+        return new ListCell<Recipe>() {
+          @Override
+          protected void updateItem(Recipe item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty || item == null) {
+              setText(null);
+              setGraphic(null);
+            } else {
+              // Create the custom layout for the ListCell
+              HBox hbox = new HBox(10); // 10px spacing between the elements
+
+              Label nameLabel = new Label(item.getName() + "   |");
+              Label timeLabel = new Label(String.valueOf(item.getCookTime()) + " mins   |");
+              Label difficultyLabel = new Label(item.getDifficulty() + "   |");
+              Label caloriesLabel = new Label(String.valueOf(item.getCalories()) + " kcal");
+
+              hbox.getChildren().addAll(nameLabel, timeLabel, difficultyLabel, caloriesLabel);
+
+              setGraphic(hbox);  // Set the custom layout for the cell
+            }
+          }
+        };
+      }
+    });
   }
 
   /**
