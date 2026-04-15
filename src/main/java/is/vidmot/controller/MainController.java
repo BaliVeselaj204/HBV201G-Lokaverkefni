@@ -37,9 +37,7 @@ public class MainController {
   RecipeManager recipeManager = RecipeManager.getInstance();
 
   /**
-   * @throws IOException
-   *
-   *                     Keyrist sjálkrafa með forritinu.
+   * @throws IOException Keyrist sjálkrafa með forritinu.
    */
   public void initialize() throws IOException {
     displayListView();
@@ -145,7 +143,7 @@ public class MainController {
 
   // Method to initialize ComboBox with sorting options
   private void initializeSortComboBox() {
-    sortComboBox.getItems().addAll("Time", "Protein", "Calories", "Difficulty");
+    sortComboBox.getItems().addAll("Name", "Time", "Difficulty", "Calories", "Protein");
     sortComboBox.setOnAction(e -> onSort());  // Trigger sort when selection changes
   }
 
@@ -153,6 +151,9 @@ public class MainController {
     String selectedSort = sortComboBox.getSelectionModel().getSelectedItem();
     if (selectedSort != null) {
       switch (selectedSort) {
+        case "Name":
+          sortByName();
+          break;
         case "Time":
           sortByCookTime();
           break;
@@ -170,6 +171,12 @@ public class MainController {
   }
 
   // Sorting methods
+  private void sortByName() {
+    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
+    sortedRecipes.setComparator((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
+    fxListView.setItems(sortedRecipes);
+  }
+
   private void sortByCookTime() {
     SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
     sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCookTime(), r2.getCookTime()));
@@ -190,7 +197,23 @@ public class MainController {
 
   private void sortByDifficulty() {
     SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
-    sortedRecipes.setComparator((r1, r2) -> r1.getDifficulty().compareTo(r2.getDifficulty()));
+    sortedRecipes.setComparator((r1, r2) -> {
+      return Integer.compare(
+              getDifficultyValue(r1.getDifficulty()),
+              getDifficultyValue(r2.getDifficulty())
+      );
+    });
     fxListView.setItems(sortedRecipes);
+  }
+
+  private int getDifficultyValue(String difficulty) {
+    if (difficulty == null) return 0;
+
+    switch (difficulty) {
+      case "Easy": return 1;
+      case "Medium": return 2;
+      case "Hard": return 3;
+      default: return 0;
+    }
   }
 }
