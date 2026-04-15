@@ -8,6 +8,7 @@ import is.vidmot.switcher.ViewSwitcher;
 import is.vinnsla.DatabaseManager;
 import is.vinnsla.Recipe;
 import is.vinnsla.RecipeManager;
+import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -33,6 +34,12 @@ public class MainController {
 
   @FXML
   private Button fxRemoveButton;
+
+  @FXML
+  private TextField searchField;
+
+  private FilteredList<Recipe> filteredRecipes;
+  private SortedList<Recipe> sortedRecipes;
 
   RecipeManager recipeManager = RecipeManager.getInstance();
 
@@ -64,7 +71,10 @@ public class MainController {
    * Hér birtum við uppskriftirnar í ListView
    */
   private void displayListView() {
-    fxListView.setItems(recipeManager.getList());
+    filteredRecipes = new FilteredList<>(recipeManager.getList(), p -> true);
+    sortedRecipes = new SortedList<>(filteredRecipes);
+
+    fxListView.setItems(sortedRecipes);
 
     // Set custom cell factory to display multiple fields in the ListView
     fxListView.setCellFactory(new Callback<ListView<Recipe>, ListCell<Recipe>>() {
@@ -172,38 +182,32 @@ public class MainController {
 
   // Sorting methods
   private void sortByName() {
-    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
-    sortedRecipes.setComparator((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
-    fxListView.setItems(sortedRecipes);
+    sortedRecipes.setComparator((r1, r2) ->
+            r1.getName().compareToIgnoreCase(r2.getName()));
   }
 
   private void sortByCookTime() {
-    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
-    sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCookTime(), r2.getCookTime()));
-    fxListView.setItems(sortedRecipes);
+    sortedRecipes.setComparator((r1, r2) ->
+            Integer.compare(r1.getCookTime(), r2.getCookTime()));
   }
 
   private void sortByProtein() {
-    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
-    sortedRecipes.setComparator((r1, r2) -> Double.compare(r1.getProtein(), r2.getProtein()));
-    fxListView.setItems(sortedRecipes);
+    sortedRecipes.setComparator((r1, r2) ->
+            Double.compare(r1.getProtein(), r2.getProtein()));
   }
 
   private void sortByCalories() {
-    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
-    sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCalories(), r2.getCalories()));
-    fxListView.setItems(sortedRecipes);
+    sortedRecipes.setComparator((r1, r2) ->
+            Integer.compare(r1.getCalories(), r2.getCalories()));
   }
 
   private void sortByDifficulty() {
-    SortedList<Recipe> sortedRecipes = new SortedList<>(recipeManager.getList());
     sortedRecipes.setComparator((r1, r2) -> {
       return Integer.compare(
               getDifficultyValue(r1.getDifficulty()),
               getDifficultyValue(r2.getDifficulty())
       );
     });
-    fxListView.setItems(sortedRecipes);
   }
 
   private int getDifficultyValue(String difficulty) {
