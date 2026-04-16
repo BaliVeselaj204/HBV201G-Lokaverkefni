@@ -2,7 +2,7 @@ package is.vidmot.view;
 
 import java.io.IOException;
 
-import is.vinnsla.FieldFormatter;
+import is.vidmot.FieldFormatter;
 import is.vinnsla.Ingredient;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

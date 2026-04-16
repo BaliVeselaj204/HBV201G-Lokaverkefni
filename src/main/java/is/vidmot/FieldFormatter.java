@@ -1,4 +1,4 @@
-package is.vinnsla;
+package is.vidmot;
 
 import java.util.function.UnaryOperator;
 import javafx.beans.property.DoubleProperty;

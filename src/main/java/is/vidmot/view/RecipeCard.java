@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import is.vidmot.controller.IngredientDialogWrapper;
-import is.vinnsla.FieldFormatter;
+import is.vidmot.FieldFormatter;
 import is.vinnsla.Ingredient;
 import is.vinnsla.Recipe;
 import javafx.fxml.FXML;
