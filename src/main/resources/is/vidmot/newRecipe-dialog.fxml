@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import is.vidmot.view.RecipeCard?>
-<?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.control.ButtonType?>
 
-<DialogPane xmlns:fx="http://javafx.com/fxml"
-  fx:controller="is.vidmot.controller.RecipeDialogController">
+<?import is.vidmot.view.RecipeCard?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+
+<DialogPane prefHeight="736.0" prefWidth="650.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="is.vidmot.controller.RecipeDialogController">
 
   <content>
     <RecipeCard fx:id="fxRecipeCard" />

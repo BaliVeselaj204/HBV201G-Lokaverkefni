@@ -182,4 +182,12 @@ public class RecipeCard extends VBox {
       }
     }
   }
+
+  public ImageView getImageView() {
+    return recipeImage;
+  }
+
+  public Recipe getRecipe() {
+    return recipe;
+  }
 }

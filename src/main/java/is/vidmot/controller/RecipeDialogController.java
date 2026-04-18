@@ -23,6 +23,13 @@ public class RecipeDialogController implements DataInterface<Recipe> {
     return recipe;
   }
 
+  @FXML
+  private void initialize() {
+    fxRecipeCard.getImageView().setFitWidth(150);
+    fxRecipeCard.getImageView().setFitHeight(150);
+    fxRecipeCard.getImageView().setPreserveRatio(true);
+  }
+
   /**
    * @return
    *

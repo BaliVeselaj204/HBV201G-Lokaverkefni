@@ -36,6 +36,9 @@ public class MainController {
   private Button fxRemoveButton;
 
   @FXML
+  private Button fxUpdateButton;
+
+  @FXML
   private TextField searchField;
 
   @FXML
@@ -105,7 +108,7 @@ public class MainController {
 
               hbox.getChildren().addAll(nameLabel, timeLabel, difficultyLabel, caloriesLabel);
 
-              setGraphic(hbox);  // Set the custom layout for the cell
+              setGraphic(hbox); // Set the custom layout for the cell
             }
           }
         };
@@ -160,7 +163,7 @@ public class MainController {
   // Method to initialize ComboBox with sorting options
   private void initializeSortComboBox() {
     sortComboBox.getItems().addAll("Name", "Time", "Difficulty", "Calories", "Protein");
-    sortComboBox.setOnAction(e -> onSort());  // Trigger sort when selection changes
+    sortComboBox.setOnAction(e -> onSort()); // Trigger sort when selection changes
   }
 
   private void onSort() {
@@ -188,42 +191,42 @@ public class MainController {
 
   // Sorting methods
   private void sortByName() {
-    sortedRecipes.setComparator((r1, r2) ->
-            r1.getName().compareToIgnoreCase(r2.getName()));
+    sortedRecipes.setComparator((r1, r2) -> r1.getName().compareToIgnoreCase(r2.getName()));
   }
 
   private void sortByCookTime() {
-    sortedRecipes.setComparator((r1, r2) ->
-            Integer.compare(r1.getCookTime(), r2.getCookTime()));
+    sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCookTime(), r2.getCookTime()));
   }
 
   private void sortByProtein() {
-    sortedRecipes.setComparator((r1, r2) ->
-            Double.compare(r1.getProtein(), r2.getProtein()));
+    sortedRecipes.setComparator((r1, r2) -> Double.compare(r1.getProtein(), r2.getProtein()));
   }
 
   private void sortByCalories() {
-    sortedRecipes.setComparator((r1, r2) ->
-            Integer.compare(r1.getCalories(), r2.getCalories()));
+    sortedRecipes.setComparator((r1, r2) -> Integer.compare(r1.getCalories(), r2.getCalories()));
   }
 
   private void sortByDifficulty() {
     sortedRecipes.setComparator((r1, r2) -> {
       return Integer.compare(
-              getDifficultyValue(r1.getDifficulty()),
-              getDifficultyValue(r2.getDifficulty())
-      );
+          getDifficultyValue(r1.getDifficulty()),
+          getDifficultyValue(r2.getDifficulty()));
     });
   }
 
   private int getDifficultyValue(String difficulty) {
-    if (difficulty == null) return 0;
+    if (difficulty == null)
+      return 0;
 
     switch (difficulty) {
-      case "Easy": return 1;
-      case "Medium": return 2;
-      case "Hard": return 3;
-      default: return 0;
+      case "Easy":
+        return 1;
+      case "Medium":
+        return 2;
+      case "Hard":
+        return 3;
+      default:
+        return 0;
     }
   }
 
@@ -241,19 +244,18 @@ public class MainController {
       boolean matchesName = true;
       if (nameFilter != null && !nameFilter.isEmpty()) {
         matchesName = recipe.getName() != null &&
-                recipe.getName().toLowerCase()
-                        .startsWith(nameFilter.toLowerCase());
+            recipe.getName().toLowerCase()
+                .startsWith(nameFilter.toLowerCase());
       }
 
       // Ingredient filter
       boolean matchesIngredient = true;
       if (ingredientFilter != null && !ingredientFilter.isEmpty()) {
         matchesIngredient = recipe.getIngredientsList() != null &&
-                recipe.getIngredientsList().stream()
-                        .anyMatch(ingredient ->
-                                ingredient.getName() != null &&
-                                        ingredient.getName().toLowerCase()
-                                                .startsWith(ingredientFilter.toLowerCase()));
+            recipe.getIngredientsList().stream()
+                .anyMatch(ingredient -> ingredient.getName() != null &&
+                    ingredient.getName().toLowerCase()
+                        .startsWith(ingredientFilter.toLowerCase()));
       }
 
       return matchesName && matchesIngredient;

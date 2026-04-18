@@ -34,6 +34,7 @@ public class Recipe {
   private ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
   private StringProperty imagePath = new SimpleStringProperty();
   private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
+  private int id;
 
   public Recipe(String name, String description, int cookTime, int calories, double protein, double carbs, double fat,
       int servings, String difficulty, List<Ingredient> ingredients, Image image) {
@@ -56,6 +57,14 @@ public class Recipe {
   }
 
   public Recipe() {
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getImagePath() {

@@ -42,4 +42,11 @@ public class RecipeManager {
   public void removeRecipe(Recipe recipe) {
     getList().remove(recipe);
   }
+
+  public void updateRecipe(Recipe oldRecipe, Recipe updatedRecipe) {
+    int index = list.indexOf(oldRecipe);
+    if (index != -1) {
+      list.set(index, updatedRecipe);
+    }
+  }
 }

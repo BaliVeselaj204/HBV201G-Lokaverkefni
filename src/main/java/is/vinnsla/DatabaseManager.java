@@ -122,6 +122,7 @@ public class DatabaseManager {
             rs.getString("difficulty"),
             loadIngredients(conn, id),
             image);
+        recipe.setId(id);
         recipes.add(recipe);
       }
 
@@ -157,6 +158,46 @@ public class DatabaseManager {
       pstmt.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
+    }
+  }
+
+  public static void updateRecipe(int recipeId, Recipe recipe) {
+    String sql = """
+            UPDATE recipes
+            SET name = ?, description = ?, cookTime = ?, calories = ?, protein = ?,
+                carbs = ?, fat = ?, servings = ?, difficulty = ?, imagePath = ?
+            WHERE id = ?
+        """;
+
+    try (Connection conn = DriverManager.getConnection(DB_URL);
+        PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+      pstmt.setString(1, recipe.getName());
+      pstmt.setString(2, recipe.getDescription());
+      pstmt.setInt(3, recipe.getCookTime());
+      pstmt.setInt(4, recipe.getCalories());
+      pstmt.setDouble(5, recipe.getProtein());
+      pstmt.setDouble(6, recipe.getCarbs());
+      pstmt.setDouble(7, recipe.getFat());
+      pstmt.setInt(8, recipe.getServings());
+      pstmt.setString(9, recipe.getDifficulty());
+      pstmt.setString(10, recipe.getImage() != null ? recipe.getImagePath() : null);
+      pstmt.setInt(11, recipeId);
+      pstmt.executeUpdate();
+
+      deleteIngredients(conn, recipeId);
+      saveIngredients(conn, recipeId, recipe.getIngredientsList());
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void deleteIngredients(Connection conn, int recipeId) throws SQLException {
+    String sql = "DELETE FROM ingredients WHERE recipe_id = ?";
+    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+      pstmt.setInt(1, recipeId);
+      pstmt.executeUpdate();
     }
   }
 }
