@@ -140,6 +140,11 @@
                         </font>
                      </Label>
                      <Button fx:id="fxAddIngredientButton" mnemonicParsing="false" onAction="#onNew" text="+" />
+                     <Button fx:id="fxRemoveIngredientButton" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" onAction="#onRemove" text="-" visible="false">
+                        <HBox.margin>
+                           <Insets left="5.0" />
+                        </HBox.margin>
+                     </Button>
                   </children>
                </HBox>
                <ListView fx:id="fxIngredientsListView" minWidth="300.0" prefHeight="150.0">

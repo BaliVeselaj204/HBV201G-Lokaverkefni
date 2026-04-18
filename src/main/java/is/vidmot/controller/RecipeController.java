@@ -2,8 +2,6 @@ package is.vidmot.controller;
 
 import is.vinnsla.DatabaseManager;
 import is.vinnsla.RecipeManager;
-import javafx.stage.Window;
-import java.util.Optional;
 import is.vidmot.switcher.View;
 import is.vidmot.switcher.ViewSwitcher;
 import is.vidmot.view.RecipeCard;
@@ -21,6 +19,9 @@ public class RecipeController implements DataInterface<Recipe> {
 
   @FXML
   private Button fxUpdateButton;
+
+  @FXML
+  private Button fxOkButton;
 
   private Recipe currentRecipe;
 
@@ -46,8 +47,19 @@ public class RecipeController implements DataInterface<Recipe> {
     RecipeManager.getInstance().updateRecipe(currentRecipe, fxRecipeCard.getRecipe());
     DatabaseManager.updateRecipe(currentRecipe.getId(), fxRecipeCard.getRecipe());
 
-    fxRecipeCard.setEditable(true);
-    fxRecipeCard.show(true);
+    editFields(true);
     fxUpdateButton.setOnAction(e -> fxOnUpdate());
+  }
+
+  @FXML
+  private void fxOnOk() {
+    editFields(false);
+  }
+
+  private void editFields(boolean state) {
+    fxRecipeCard.setEditable(state);
+    fxRecipeCard.show(state);
+    fxOkButton.setVisible(state);
+    fxUpdateButton.setVisible(!state);
   }
 }

@@ -49,4 +49,8 @@ public class RecipeManager {
       list.set(index, updatedRecipe);
     }
   }
+
+  public void removeIngredient(Ingredient ingredient, Recipe recipe) {
+    recipe.removeIngredient(ingredient);
+  }
 }

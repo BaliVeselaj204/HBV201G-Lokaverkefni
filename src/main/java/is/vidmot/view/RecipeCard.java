@@ -6,9 +6,12 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import is.vidmot.controller.IngredientDialogWrapper;
+import is.vidmot.controller.RemoveRecipeDialogWrapper;
 import is.vidmot.FieldFormatter;
+import is.vinnsla.DatabaseManager;
 import is.vinnsla.Ingredient;
 import is.vinnsla.Recipe;
+import is.vinnsla.RecipeManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -69,6 +72,9 @@ public class RecipeCard extends VBox {
   @FXML
   private Button fxAddIngredientButton;
 
+  @FXML
+  private Button fxRemoveIngredientButton;
+
   private Recipe recipe;
 
   public RecipeCard() {
@@ -125,6 +131,7 @@ public class RecipeCard extends VBox {
     diffComboBox.setVisible(visible);
     fxDiffLabel.setVisible(!visible);
     fxAddIngredientButton.setVisible(visible);
+    fxRemoveIngredientButton.setVisible(visible);
   }
 
   public boolean isEmpty() {
@@ -137,6 +144,18 @@ public class RecipeCard extends VBox {
         || cookTime == null || cookTime.isBlank();
   }
 
+  public void initialize() throws IOException {
+    disableButton();
+  }
+
+  /**
+   * Svo að ekki sé hægt að ýta á eyða hráefni nema hráefni sé valið
+   */
+  private void disableButton() {
+    fxRemoveIngredientButton.disableProperty()
+        .bind(fxIngredientsListView.getSelectionModel().selectedItemProperty().isNull());
+  }
+
   @FXML
   private void onNew() {
     Window owner = fxAddIngredientButton.getScene().getWindow();
@@ -144,6 +163,17 @@ public class RecipeCard extends VBox {
     result.ifPresent(ingredient -> {
       recipe.newIngredient(ingredient);
     });
+  }
+
+  @FXML
+  private void onRemove() {
+    boolean confirmed = RemoveRecipeDialogWrapper.birtaDialog(fxRemoveIngredientButton.getScene().getWindow());
+
+    if (confirmed) {
+      Ingredient chosenIngredient = fxIngredientsListView.getSelectionModel().getSelectedItem();
+      RecipeManager.getInstance().removeIngredient(chosenIngredient, getRecipe());
+      DatabaseManager.deleteRecipe(chosenIngredient.getName());
+    }
   }
 
   @FXML
