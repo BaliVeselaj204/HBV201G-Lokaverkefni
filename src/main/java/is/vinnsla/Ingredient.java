@@ -61,6 +61,6 @@ public class Ingredient {
 
   @Override
   public String toString() {
-    return name.get() + "|" + amount.get() + "|" + unit.get();
+    return name.get() + "   |   " + amount.get() + " " + unit.get();
   }
 }
