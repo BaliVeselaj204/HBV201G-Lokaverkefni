@@ -32,10 +32,21 @@
             <HBox.margin>
                <Insets right="10.0" />
             </HBox.margin></ComboBox>
-         <TextField fx:id="searchField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="Search">
+         <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="150.0" promptText="Search by recipe name">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
+            <font>
+               <Font size="12.0" />
+            </font>
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin>
+         </TextField>
+         <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="150.0" promptText="Search by ingredient">
+            <font>
+               <Font size="12.0" />
+            </font>
          </TextField>
       </children>
    </HBox>
