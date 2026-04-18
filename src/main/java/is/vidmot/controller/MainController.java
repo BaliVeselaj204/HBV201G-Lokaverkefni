@@ -50,6 +50,18 @@ public class MainController {
     displayListView();
     disableButtons();
     initializeSortComboBox();
+
+    searchField.textProperty().addListener((obs, oldVal, newVal) -> {
+      filteredRecipes.setPredicate(recipe -> {
+        if (newVal == null || newVal.isEmpty()) {
+          return true;
+        }
+
+        String filter = newVal.toLowerCase();
+
+        return recipe.getName().toLowerCase().contains(filter);
+      });
+    });
   }
 
   /**
