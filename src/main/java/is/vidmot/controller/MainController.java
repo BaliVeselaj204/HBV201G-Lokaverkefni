@@ -38,6 +38,9 @@ public class MainController {
   @FXML
   private TextField searchField;
 
+  @FXML
+  private TextField ingredientSearchField;
+
   private FilteredList<Recipe> filteredRecipes;
   private SortedList<Recipe> sortedRecipes;
 
@@ -51,17 +54,8 @@ public class MainController {
     disableButtons();
     initializeSortComboBox();
 
-    searchField.textProperty().addListener((obs, oldVal, newVal) -> {
-      filteredRecipes.setPredicate(recipe -> {
-        if (newVal == null || newVal.isEmpty()) {
-          return true;
-        }
-
-        String filter = newVal.toLowerCase();
-
-        return recipe.getName().toLowerCase().contains(filter);
-      });
-    });
+    searchField.textProperty().addListener((obs, oldVal, newVal) -> updateFilter());
+    ingredientSearchField.textProperty().addListener((obs, oldVal, newVal) -> updateFilter());
   }
 
   /**
@@ -231,5 +225,38 @@ public class MainController {
       case "Hard": return 3;
       default: return 0;
     }
+  }
+
+  /**
+   * Filter that works on both search bars at the same time
+   * Gives an insensitive result and updates the list
+   */
+  private void updateFilter() {
+    String nameFilter = searchField.getText();
+    String ingredientFilter = ingredientSearchField.getText();
+
+    filteredRecipes.setPredicate(recipe -> {
+
+      // Name filter
+      boolean matchesName = true;
+      if (nameFilter != null && !nameFilter.isEmpty()) {
+        matchesName = recipe.getName() != null &&
+                recipe.getName().toLowerCase()
+                        .startsWith(nameFilter.toLowerCase());
+      }
+
+      // Ingredient filter
+      boolean matchesIngredient = true;
+      if (ingredientFilter != null && !ingredientFilter.isEmpty()) {
+        matchesIngredient = recipe.getIngredientsList() != null &&
+                recipe.getIngredientsList().stream()
+                        .anyMatch(ingredient ->
+                                ingredient.getName() != null &&
+                                        ingredient.getName().toLowerCase()
+                                                .startsWith(ingredientFilter.toLowerCase()));
+      }
+
+      return matchesName && matchesIngredient;
+    });
   }
 }
