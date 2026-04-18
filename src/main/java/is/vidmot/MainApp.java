@@ -15,7 +15,7 @@ import is.vinnsla.RecipeManager;
 public class MainApp extends Application {
   @Override
   public void start(Stage stage) throws IOException {
-    Scene scene = new Scene(new Pane(), 900, 700);
+    Scene scene = new Scene(new Pane(), 900, 800);
     ViewSwitcher.setScene(scene);
     ViewSwitcher.switchTo(View.MAIN);
     stage.setScene(scene);
