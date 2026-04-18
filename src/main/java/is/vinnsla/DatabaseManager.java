@@ -162,6 +162,7 @@ public class DatabaseManager {
   }
 
   public static void updateRecipe(int recipeId, Recipe recipe) {
+    System.out.println("Updating recipe with id: " + recipeId);
     String sql = """
             UPDATE recipes
             SET name = ?, description = ?, cookTime = ?, calories = ?, protein = ?,
@@ -198,6 +199,31 @@ public class DatabaseManager {
     try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
       pstmt.setInt(1, recipeId);
       pstmt.executeUpdate();
+    }
+  }
+
+  public static void deleteIngredient(Ingredient ingredient) {
+    String sql = "DELETE FROM ingredients WHERE name = ?";
+    try (Connection conn = DriverManager.getConnection(DB_URL);
+        PreparedStatement pstmt = conn.prepareStatement(sql)) {
+      pstmt.setString(1, ingredient.getName());
+      pstmt.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void saveIngredient(int recipeId, Ingredient ingredient) {
+    String sql = "INSERT INTO ingredients (recipe_id, name, amount, unit) VALUES (?, ?, ?, ?)";
+    try (Connection conn = DriverManager.getConnection(DB_URL);
+        PreparedStatement pstmt = conn.prepareStatement(sql)) {
+      pstmt.setInt(1, recipeId);
+      pstmt.setString(2, ingredient.getName());
+      pstmt.setDouble(3, ingredient.getAmount());
+      pstmt.setString(4, ingredient.getUnit());
+      pstmt.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
   }
 }

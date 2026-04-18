@@ -23,6 +23,9 @@ public class RecipeController implements DataInterface<Recipe> {
   @FXML
   private Button fxOkButton;
 
+  @FXML
+  private Button fxBackButton;
+
   private Recipe currentRecipe;
 
   @Override
@@ -44,15 +47,14 @@ public class RecipeController implements DataInterface<Recipe> {
 
   @FXML
   private void fxOnUpdate() {
-    RecipeManager.getInstance().updateRecipe(currentRecipe, fxRecipeCard.getRecipe());
-    DatabaseManager.updateRecipe(currentRecipe.getId(), fxRecipeCard.getRecipe());
-
     editFields(true);
-    fxUpdateButton.setOnAction(e -> fxOnUpdate());
   }
 
   @FXML
   private void fxOnOk() {
+    RecipeManager.getInstance().updateRecipe(currentRecipe, fxRecipeCard.getRecipe());
+    DatabaseManager.updateRecipe(currentRecipe.getId(), fxRecipeCard.getRecipe());
+
     editFields(false);
   }
 
@@ -61,5 +63,6 @@ public class RecipeController implements DataInterface<Recipe> {
     fxRecipeCard.show(state);
     fxOkButton.setVisible(state);
     fxUpdateButton.setVisible(!state);
+    fxBackButton.setDisable(state);
   }
 }

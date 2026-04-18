@@ -162,6 +162,7 @@ public class RecipeCard extends VBox {
     Optional<Ingredient> result = IngredientDialogWrapper.birtaDialog(owner);
     result.ifPresent(ingredient -> {
       recipe.newIngredient(ingredient);
+      DatabaseManager.saveIngredient(recipe.getId(), ingredient);
     });
   }
 
@@ -172,7 +173,7 @@ public class RecipeCard extends VBox {
     if (confirmed) {
       Ingredient chosenIngredient = fxIngredientsListView.getSelectionModel().getSelectedItem();
       RecipeManager.getInstance().removeIngredient(chosenIngredient, getRecipe());
-      DatabaseManager.deleteRecipe(chosenIngredient.getName());
+      DatabaseManager.deleteIngredient(chosenIngredient);
     }
   }
 
