@@ -11,41 +11,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="659.0" prefWidth="457.0" spacing="20.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.controller.MainController">
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="900.0" spacing="20.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.controller.MainController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
    <HBox prefHeight="20.0" prefWidth="200.0">
       <children>
-         <Label text="Sort by:">
+         <Label prefHeight="30.0" text="Sort by:">
             <font>
-               <Font size="12.0" />
+               <Font size="20.0" />
             </font>
             <padding>
                <Insets right="5.0" />
             </padding>
          </Label>
-         <ComboBox fx:id="sortComboBox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" prefWidth="20.0">
+         <ComboBox fx:id="sortComboBox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="150.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
             <HBox.margin>
-               <Insets right="10.0" />
+               <Insets left="10.0" right="150.0" />
             </HBox.margin></ComboBox>
-         <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="150.0" promptText="Search by recipe name">
+         <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Search by recipe name">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
             <font>
-               <Font size="12.0" />
+               <Font size="16.0" />
             </font>
             <HBox.margin>
-               <Insets right="10.0" />
+               <Insets right="30.0" />
             </HBox.margin>
          </TextField>
-         <TextField fx:id="ingredientSearchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="150.0" promptText="Search by ingredient">
+         <TextField fx:id="ingredientSearchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Search by ingredient">
             <font>
-               <Font size="12.0" />
+               <Font size="16.0" />
             </font>
          </TextField>
       </children>
