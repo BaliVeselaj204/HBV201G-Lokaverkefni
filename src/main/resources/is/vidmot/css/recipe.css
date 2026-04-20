@@ -3,21 +3,35 @@
     -fx-font-family: "Segoe UI", Arial, sans-serif;
 }
 
-#fxBackButton {
-    -fx-background-color: #3498db;
-    -fx-text-fill: white;
+.action-button {
     -fx-font-size: 16px;
     -fx-padding: 8px 20px;
     -fx-background-radius: 6px;
     -fx-cursor: hand;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
 }
 
-#fxBackButton:hover {
+.action-button:hover {
     -fx-background-color: #2980b9;
 }
 
-#fxBackButton:pressed {
+.action-button:pressed {
     -fx-background-color: #1f6391;
+}
+
+#fxOkButton {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #333333;
+}
+
+#fxOkButton:hover {
+    -fx-background-color: #c8c8c8;
+}
+
+#fxOkButton:pressed {
+    -fx-background-color: #aaaaaa;
 }
 
 .text-field {
@@ -26,6 +40,7 @@
     -fx-border-radius: 6px;
     -fx-background-radius: 6px;
     -fx-padding: 6px 10px;
+    -fx-font-size: 14px;
 }
 
 .text-field:focused {

@@ -136,12 +136,11 @@ public class RecipeCard extends VBox {
 
   public boolean isEmpty() {
     String name = nameField.getText();
-    String servings = servingsField.getText();
-    String cookTime = cookTimeField.getText();
 
     return name == null || name.isBlank()
-        || servings == null || servings.isBlank()
-        || cookTime == null || cookTime.isBlank();
+        || recipe.getServings() <= 0
+        || recipe.getCookTime() <= 0
+        || fxIngredientsListView.getItems().isEmpty();
   }
 
   public void initialize() throws IOException {

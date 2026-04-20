@@ -64,7 +64,7 @@ public class DatabaseManager {
       pstmt.setDouble(7, recipe.getFat());
       pstmt.setInt(8, recipe.getServings());
       pstmt.setString(9, recipe.getDifficulty());
-      pstmt.setString(10, recipe.getImage() != null ? recipe.getImagePath() : null);
+      pstmt.setString(10, recipe.getImagePath());
       pstmt.executeUpdate();
 
       ResultSet keys = pstmt.getGeneratedKeys();
@@ -123,6 +123,7 @@ public class DatabaseManager {
             loadIngredients(conn, id),
             image);
         recipe.setId(id);
+        recipe.setImagePath(imagePath);
         recipes.add(recipe);
       }
 
@@ -162,7 +163,6 @@ public class DatabaseManager {
   }
 
   public static void updateRecipe(int recipeId, Recipe recipe) {
-    System.out.println("Updating recipe with id: " + recipeId);
     String sql = """
             UPDATE recipes
             SET name = ?, description = ?, cookTime = ?, calories = ?, protein = ?,
@@ -182,7 +182,7 @@ public class DatabaseManager {
       pstmt.setDouble(7, recipe.getFat());
       pstmt.setInt(8, recipe.getServings());
       pstmt.setString(9, recipe.getDifficulty());
-      pstmt.setString(10, recipe.getImage() != null ? recipe.getImagePath() : null);
+      pstmt.setString(10, recipe.getImagePath());
       pstmt.setInt(11, recipeId);
       pstmt.executeUpdate();
 

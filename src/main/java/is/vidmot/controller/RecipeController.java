@@ -62,6 +62,7 @@ public class RecipeController implements DataInterface<Recipe> {
     fxRecipeCard.setEditable(state);
     fxRecipeCard.show(state);
     fxOkButton.setVisible(state);
+    fxOkButton.setManaged(state);
     fxUpdateButton.setVisible(!state);
     fxBackButton.setDisable(state);
   }

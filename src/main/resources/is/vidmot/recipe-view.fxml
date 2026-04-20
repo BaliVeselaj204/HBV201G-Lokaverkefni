@@ -10,15 +10,15 @@
 <VBox alignment="CENTER" prefHeight="862.0" prefWidth="700.0" spacing="5" stylesheets="@css/recipe.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.controller.RecipeController">
 
   <RecipeCard fx:id="fxRecipeCard" alignment="CENTER" />
-   <HBox alignment="BOTTOM_CENTER" spacing="20.0" prefHeight="50.0" prefWidth="200.0">
+   <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
       <children>
-       <Button fx:id="fxBackButton" onAction="#fxOnBack" text="Back" />
-         <Button fx:id="fxUpdateButton" layoutX="321.0" layoutY="71.0" onAction="#fxOnUpdate" text="Update">
+       <Button fx:id="fxBackButton" onAction="#fxOnBack" styleClass="action-button" text="Back" />
+         <Button fx:id="fxUpdateButton" layoutX="321.0" layoutY="71.0" onAction="#fxOnUpdate" styleClass="action-button" text="Update">
             <font>
                <Font size="16.0" />
             </font>
          </Button>
-         <Button fx:id="fxOkButton" mnemonicParsing="false" onAction="#fxOnOk" text="OK" visible="false" />
+         <Button fx:id="fxOkButton" mnemonicParsing="false" onAction="#fxOnOk" styleClass="action-button" text="OK" visible="false" managed="false"/>
       </children>
       <VBox.margin>
          <Insets bottom="10.0" />
