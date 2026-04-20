@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fdf9ecf4-07c6-4c97-9b3b-fb359073baad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/is/vidmot/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/is/vidmot/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/is/vidmot/controller/RemoveRecipeDialogWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/is/vidmot/controller/RemoveRecipeDialogWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/is/vidmot/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/is/vidmot/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/is/vidmot/recipe-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/is/vidmot/recipe-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/is/vidmot/removeRecipe-dialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/is/vidmot/removeRecipe-dialog.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +84,8 @@
       <workItem from="1774879728782" duration="169000" />
       <workItem from="1774879907158" duration="4132000" />
       <workItem from="1774966247907" duration="1965000" />
+      <workItem from="1775653659525" duration="18451000" />
+      <workItem from="1776698168966" duration="1211000" />
     </task>
     <servers />
   </component>

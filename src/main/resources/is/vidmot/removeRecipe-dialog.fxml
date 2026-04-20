@@ -7,7 +7,7 @@
 <DialogPane xmlns:fx="http://javafx.com/fxml" stylesheets="@css/removeRecipeDialog.css"
   fx:controller="is.vidmot.controller.RemoveRecipeDialogController">
   <content>
-    <Label text="Ertu viss um að þú viljir eyða þessum færslu?" />
+    <Label text="Are you sure you want to remove this recipe?" />
   </content>
   <buttonTypes>
     <ButtonType fx:constant="OK" />

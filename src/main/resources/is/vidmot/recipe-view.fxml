@@ -10,9 +10,9 @@
 <VBox alignment="CENTER" prefHeight="862.0" prefWidth="700.0" spacing="5" stylesheets="@css/recipe.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.controller.RecipeController">
 
   <RecipeCard fx:id="fxRecipeCard" alignment="CENTER" />
-   <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="200.0">
+   <HBox alignment="BOTTOM_CENTER" spacing="20.0" prefHeight="50.0" prefWidth="200.0">
       <children>
-       <Button fx:id="fxBackButton" onAction="#fxOnBack" text="Aftur" />
+       <Button fx:id="fxBackButton" onAction="#fxOnBack" text="Back" />
          <Button fx:id="fxUpdateButton" layoutX="321.0" layoutY="71.0" onAction="#fxOnUpdate" text="Update">
             <font>
                <Font size="16.0" />

@@ -57,17 +57,17 @@
   </BorderPane>
   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
     <children>
-      <Button fx:id="fxViewButton" mnemonicParsing="false" onAction="#onView" text="Skoða">
+      <Button fx:id="fxViewButton" mnemonicParsing="false" onAction="#onView" text="View">
         <font>
           <Font size="16.0" />
         </font>
       </Button>
-      <Button fx:id="fxNewButton" mnemonicParsing="false" onAction="#onNew" text="Nýja">
+      <Button fx:id="fxNewButton" mnemonicParsing="false" onAction="#onNew" text="New">
         <font>
           <Font size="16.0" />
         </font>
       </Button>
-      <Button fx:id="fxRemoveButton" mnemonicParsing="false" onAction="#onRemove" text="Eyða">
+      <Button fx:id="fxRemoveButton" mnemonicParsing="false" onAction="#onRemove" text="Remove">
         <font>
           <Font size="16.0" />
         </font>

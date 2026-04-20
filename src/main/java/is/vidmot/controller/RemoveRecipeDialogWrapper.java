@@ -23,7 +23,7 @@ public class RemoveRecipeDialogWrapper {
       Dialog<Boolean> dialog = new Dialog<>();
       dialog.setDialogPane(pane);
       dialog.initOwner(owner);
-      dialog.setTitle("Staðfesting");
+      dialog.setTitle("Remove recipe");
       dialog.setResultConverter(buttonType -> buttonType == ButtonType.OK);
       return dialog.showAndWait().orElse(false);
 

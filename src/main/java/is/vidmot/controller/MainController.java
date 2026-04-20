@@ -141,7 +141,7 @@ public class MainController {
     if (result.isPresent()) {
       hreinsaLabel();
     } else {
-      fxLabel.setText("Fylltu inn alla reiti");
+      fxLabel.setText("Fill in all fields");
     }
   }
 
