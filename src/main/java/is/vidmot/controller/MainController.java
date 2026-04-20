@@ -104,9 +104,10 @@ public class MainController {
               Label nameLabel = new Label(item.getName() + "   |");
               Label timeLabel = new Label(String.valueOf(item.getCookTime()) + " mins   |");
               Label difficultyLabel = new Label(item.getDifficulty() + "   |");
-              Label caloriesLabel = new Label(String.valueOf(item.getCalories()) + " kcal");
+              Label caloriesLabel = new Label(String.valueOf(item.getCalories()) + " kcal   |");
+              Label proteinLabel = new Label(String.valueOf(item.getProtein()) + " g protein");
 
-              hbox.getChildren().addAll(nameLabel, timeLabel, difficultyLabel, caloriesLabel);
+              hbox.getChildren().addAll(nameLabel, timeLabel, difficultyLabel, caloriesLabel, proteinLabel);
 
               setGraphic(hbox); // Set the custom layout for the cell
             }
