@@ -18,7 +18,7 @@
                <Font size="16.0" />
             </font>
          </Button>
-         <Button fx:id="fxOkButton" mnemonicParsing="false" onAction="#fxOnOk" styleClass="action-button" text="OK" visible="false" managed="false"/>
+         <Button fx:id="fxOkButton" managed="false" mnemonicParsing="false" onAction="#fxOnOk" styleClass="action-button" text="OK" visible="false" />
       </children>
       <VBox.margin>
          <Insets bottom="10.0" />
