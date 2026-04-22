@@ -14,6 +14,11 @@ public class RecipeManager {
     list = FXCollections.observableArrayList();
   }
 
+  /**
+   * Fall fyrir tilviksbreytur
+   * 
+   * @return
+   */
   public static RecipeManager getInstance() {
     if (instance == null) {
       instance = new RecipeManager();
@@ -26,23 +31,29 @@ public class RecipeManager {
   }
 
   /**
+   * Bætir við nýju uppskrift í lista
+   * 
    * @param recipe
-   *
-   *               Bætir við nýju uppskrift í lista
    */
   public void newRecipe(Recipe recipe) {
     getList().add(recipe);
   }
 
   /**
+   * Eyðir uppskrift úr lista
+   * 
    * @param recipe
-   *
-   *               Eyðir uppskrift úr lista
    */
   public void removeRecipe(Recipe recipe) {
     getList().remove(recipe);
   }
 
+  /**
+   * Uppfæra uppskrift
+   * 
+   * @param oldRecipe
+   * @param updatedRecipe
+   */
   public void updateRecipe(Recipe oldRecipe, Recipe updatedRecipe) {
     int index = list.indexOf(oldRecipe);
     if (index != -1) {
@@ -50,6 +61,12 @@ public class RecipeManager {
     }
   }
 
+  /**
+   * Eyða hráefni frá lista
+   * 
+   * @param ingredient
+   * @param recipe
+   */
   public void removeIngredient(Ingredient ingredient, Recipe recipe) {
     recipe.removeIngredient(ingredient);
   }

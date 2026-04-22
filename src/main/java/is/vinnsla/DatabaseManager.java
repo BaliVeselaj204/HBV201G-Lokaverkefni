@@ -6,10 +6,16 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 
+/**
+ * DatabaseManager
+ */
 public class DatabaseManager {
 
   private static final String DB_URL = "jdbc:sqlite:recipes.db";
 
+  /**
+   * Búa til gagnagrunn
+   */
   public static void initialize() {
     try (Connection conn = DriverManager.getConnection(DB_URL);
         Statement stmt = conn.createStatement()) {
@@ -46,6 +52,11 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * Setja uppskrift inn í gagnagrunn
+   * 
+   * @param recipe
+   */
   public static void saveRecipe(Recipe recipe) {
     String sql = """
             INSERT INTO recipes (name, description, cookTime, calories, protein, carbs, fat, servings, difficulty, imagePath)
@@ -78,6 +89,14 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * Setja inn hráefni fyrir hverja uppskrift
+   * 
+   * @param conn
+   * @param recipeId
+   * @param ingredients
+   * @throws SQLException
+   */
   private static void saveIngredients(Connection conn, int recipeId, List<Ingredient> ingredients) throws SQLException {
     String sql = "INSERT INTO ingredients (recipe_id, name, amount, unit) VALUES (?, ?, ?, ?)";
 
@@ -93,6 +112,11 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * Birta allar uppskriftir með SELECT fyrirspurn
+   * 
+   * @return
+   */
   public static List<Recipe> loadAllRecipes() {
     List<Recipe> recipes = new ArrayList<>();
     String sql = "SELECT * FROM recipes";
@@ -134,6 +158,14 @@ public class DatabaseManager {
     return recipes;
   }
 
+  /**
+   * Birta öll hráefni fyrir hverja uppskrift
+   * 
+   * @param conn
+   * @param recipeId
+   * @return
+   * @throws SQLException
+   */
   private static List<Ingredient> loadIngredients(Connection conn, int recipeId) throws SQLException {
     List<Ingredient> ingredients = new ArrayList<>();
     String sql = "SELECT * FROM ingredients WHERE recipe_id = ?";
@@ -151,6 +183,11 @@ public class DatabaseManager {
     return ingredients;
   }
 
+  /**
+   * Eyða uppskrift úr gagnagrunn
+   * 
+   * @param recipeName
+   */
   public static void deleteRecipe(String recipeName) {
     String sql = "DELETE FROM recipes WHERE name = ?";
     try (Connection conn = DriverManager.getConnection(DB_URL);
@@ -162,6 +199,12 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * update recipe í gagnagrunn
+   * 
+   * @param recipeId
+   * @param recipe
+   */
   public static void updateRecipe(int recipeId, Recipe recipe) {
     String sql = """
             UPDATE recipes
@@ -194,6 +237,13 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * Eyða hráefni þegar eytt eru uppskrift
+   * 
+   * @param conn
+   * @param recipeId
+   * @throws SQLException
+   */
   private static void deleteIngredients(Connection conn, int recipeId) throws SQLException {
     String sql = "DELETE FROM ingredients WHERE recipe_id = ?";
     try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -202,6 +252,11 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * Eyða valið hráefni
+   * 
+   * @param ingredient
+   */
   public static void deleteIngredient(Ingredient ingredient) {
     String sql = "DELETE FROM ingredients WHERE name = ?";
     try (Connection conn = DriverManager.getConnection(DB_URL);
@@ -213,6 +268,12 @@ public class DatabaseManager {
     }
   }
 
+  /**
+   * Geyma eitt hráefni
+   * 
+   * @param recipeId
+   * @param ingredient
+   */
   public static void saveIngredient(int recipeId, Ingredient ingredient) {
     String sql = "INSERT INTO ingredients (recipe_id, name, amount, unit) VALUES (?, ?, ?, ?)";
     try (Connection conn = DriverManager.getConnection(DB_URL);

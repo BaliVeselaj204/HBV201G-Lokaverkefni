@@ -34,6 +34,11 @@ public class IngredientCard extends VBox {
     }
   }
 
+  /**
+   * Búa til bindingu fyrir hráefni
+   * 
+   * @param ingredient
+   */
   public void bindIngredient(Ingredient ingredient) {
     FieldFormatter formatter = new FieldFormatter();
     fxNameField.textProperty().bindBidirectional(ingredient.nameProperty());

@@ -10,6 +10,9 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Window;
 
+/**
+ * IngredientDialogWrapper
+ */
 public class IngredientDialogWrapper {
 
   /**

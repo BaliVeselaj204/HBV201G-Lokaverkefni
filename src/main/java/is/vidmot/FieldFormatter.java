@@ -23,6 +23,12 @@ public class FieldFormatter {
     return newText.matches("\\d*(\\.\\d*)?") ? change : null;
   };
 
+  /**
+   * Formatter fyrir integer fields
+   * 
+   * @param field
+   * @param property
+   */
   public void bindIntegerField(TextField field, IntegerProperty property) {
     TextFormatter<Integer> formatter = new TextFormatter<>(
         new IntegerStringConverter(),
@@ -40,6 +46,12 @@ public class FieldFormatter {
     });
   }
 
+  /**
+   * Formatter fyrir double fields
+   * 
+   * @param field
+   * @param property
+   */
   public void bindDoubleField(TextField field, DoubleProperty property) {
     TextFormatter<Double> formatter = new TextFormatter<>(
         new DoubleStringConverter(),

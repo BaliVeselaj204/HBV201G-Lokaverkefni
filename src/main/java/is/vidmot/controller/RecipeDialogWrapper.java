@@ -13,11 +13,11 @@ import javafx.stage.Window;
 public class RecipeDialogWrapper {
 
   /**
+   * Opnar Dialog pane og sendir tóma uppskirft sem controller bindir við
+   * gögn fyrir nýja uppskriftir
+   * 
    * @param owner
-   * @return
-   *
-   *         Opnar Dialog pane og sendir tóma ferð sem controller bindir við gögn
-   *         fyrir nýja ferð
+   * @return Optional<Recipe>
    */
   public static Optional<Recipe> birtaDialog(Window owner) {
     FXMLLoader loader = new FXMLLoader(

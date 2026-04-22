@@ -90,12 +90,22 @@ public class RecipeCard extends VBox {
     diffComboBox.getItems().addAll("Easy", "Medium", "Hard");
   }
 
+  /**
+   * Binda recipe
+   * 
+   * @param recipe
+   */
   public void setRecipe(Recipe recipe) {
     this.recipe = recipe;
     bindRecipe(recipe);
     fxIngredientsListView.setItems(recipe.getIngredientsList());
   }
 
+  /**
+   * Binda öll fields fyrir recipe
+   * 
+   * @param recipe
+   */
   public void bindRecipe(Recipe recipe) {
     FieldFormatter formatter = new FieldFormatter();
     nameField.textProperty().bindBidirectional(recipe.nameProperty());
@@ -114,6 +124,11 @@ public class RecipeCard extends VBox {
     recipeImage.imageProperty().bindBidirectional(recipe.imageProperty());
   }
 
+  /**
+   * Gera fields editable
+   * 
+   * @param editable
+   */
   public void setEditable(boolean editable) {
     nameField.setEditable(editable);
     servingsField.setEditable(editable);
@@ -126,6 +141,11 @@ public class RecipeCard extends VBox {
     diffComboBox.setDisable(!editable);
   }
 
+  /**
+   * Birta/fela fields
+   * 
+   * @param visible
+   */
   public void show(boolean visible) {
     imageButton.setVisible(visible);
     diffComboBox.setVisible(visible);
@@ -134,6 +154,11 @@ public class RecipeCard extends VBox {
     fxRemoveIngredientButton.setVisible(visible);
   }
 
+  /**
+   * Skoðar hvort lágmarks upplýsingar eru settar inn fyrir nýja uppskrift
+   * 
+   * @return
+   */
   public boolean isEmpty() {
     String name = nameField.getText();
 
@@ -155,6 +180,9 @@ public class RecipeCard extends VBox {
         .bind(fxIngredientsListView.getSelectionModel().selectedItemProperty().isNull());
   }
 
+  /**
+   * Búa til nýtt hráefni
+   */
   @FXML
   private void onNew() {
     Window owner = fxAddIngredientButton.getScene().getWindow();
@@ -165,6 +193,9 @@ public class RecipeCard extends VBox {
     });
   }
 
+  /**
+   * Eyða hráefni
+   */
   @FXML
   private void onRemove() {
     boolean confirmed = RemoveRecipeDialogWrapper.birtaDialog(fxRemoveIngredientButton.getScene().getWindow());
@@ -176,6 +207,9 @@ public class RecipeCard extends VBox {
     }
   }
 
+  /**
+   * Opna file chooser fyrir mynd
+   */
   @FXML
   private void onImageButton() {
     FileChooser fileChooser = new FileChooser();
@@ -195,6 +229,11 @@ public class RecipeCard extends VBox {
     showImage(selectedImage);
   }
 
+  /**
+   * Birta mynd
+   * 
+   * @param selectedImage
+   */
   private void showImage(File selectedImage) {
     if (selectedImage != null) {
       try {

@@ -45,11 +45,17 @@ public class RecipeController implements DataInterface<Recipe> {
     ViewSwitcher.switchTo(View.MAIN);
   }
 
+  /**
+   * Fall sem keyrist þegar valið er update á uppskrift
+   */
   @FXML
   private void fxOnUpdate() {
     editFields(true);
   }
 
+  /**
+   * Fall sem keyrist þegar ýtt er ok eftir uppfært er uppskrift
+   */
   @FXML
   private void fxOnOk() {
     RecipeManager.getInstance().updateRecipe(currentRecipe, fxRecipeCard.getRecipe());
@@ -58,6 +64,11 @@ public class RecipeController implements DataInterface<Recipe> {
     editFields(false);
   }
 
+  /**
+   * Gera fields editable sýnilega þegar valið er uppfæra uppskrift
+   * 
+   * @param state
+   */
   private void editFields(boolean state) {
     fxRecipeCard.setEditable(state);
     fxRecipeCard.show(state);

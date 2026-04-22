@@ -10,10 +10,10 @@ import javafx.stage.Window;
 public class RemoveRecipeDialogWrapper {
 
   /**
+   * Opnar dialog pane til að eyða uppskrift
+   * 
    * @param owner
    * @return
-   *
-   *         Opnar dialog pane til að eyða ferð
    */
   public static boolean birtaDialog(Window owner) {
     FXMLLoader loader = new FXMLLoader(
